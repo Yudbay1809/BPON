@@ -12,21 +12,25 @@ This project is built using modern web technologies to ensure optimal performanc
 - **Internationalization (i18n)**: [next-intl](https://next-intl-docs.vercel.app/)
 - **Icons**: [Lucide React](https://lucide.dev/)
 - **Animations**: Framer Motion
-- **Database / ORM** (Future CMS Integration): [Prisma](https://www.prisma.io/)
+- **Database / ORM**: [Prisma](https://www.prisma.io/)
 
-## Features
+## Key Improvements & Features
 
-- **Full Multilingual Support**: English (en) and Indonesian (id) routing and translation out of the box.
-- **Dynamic Routing & SEO**: Optimized for search engines with server-side rendering and dynamic locale parameters.
-- **Modern UI/UX**: Premium and vibrant design with smooth transitions and responsive layouts.
-- **Vercel Ready**: Pre-configured for seamless deployment on Vercel Edge/Serverless environments.
+- **Full Multilingual Support**: Dynamic routing and translation for English (en) and Indonesian (id) using `next-intl`.
+- **Localized Assets**: All images are stored locally in `/public/images/`, removing external dependencies and ensuring 100% availability and faster load times.
+- **Premium Error Handling**: 
+  - Custom **404 (Not Found)** pages integrated within the locale layout.
+  - **Global Error Boundaries** for critical system failures with a premium, brand-consistent design.
+  - Experimental **Global 404** handling for unmatched routes at the root level.
+- **Optimized for Next.js 16**: Fully compatible with the latest file conventions, including `proxy.ts` (formerly middleware).
+- **Responsive & Modern UI**: A premium dark-themed design with vibrant corporate red accents, optimized for all device sizes.
 
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js (v18 or higher)
-- npm or pnpm or yarn
+- npm, pnpm, or yarn
 
 ### Installation
 
@@ -51,26 +55,24 @@ To start the development server with Turbopack, run:
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. The application will automatically route you to the default locale (e.g., `/id`).
+Open [http://localhost:3000](http://localhost:3000) with your browser. The application will automatically route you to the default locale (e.g., `/id`).
 
 ## Deployment on Vercel
 
-This project is fully optimized for Vercel deployment.
+This project is optimized for Vercel:
 
 1. Push your code to GitHub.
-2. Log in to [Vercel](https://vercel.com/) and click **Add New Project**.
-3. Import this repository from your GitHub account.
-4. **Build Settings**: Vercel will automatically detect that this is a Next.js project. The default build command (`next build`) and output directory (`.next`) are correct.
-5. **Environment Variables**: Add any necessary environment variables (e.g., `DATABASE_URL` for Prisma) in the Vercel dashboard.
-6. Click **Deploy**.
+2. Import the repository in [Vercel](https://vercel.com/).
+3. Vercel will auto-detect Next.js settings.
+4. Click **Deploy**.
 
 ## Project Structure
 
-- `/src/app/[locale]`: Contains the multilingual pages (Home, About, Business, Products, Sustainability, News, Contact).
-- `/src/components`: Reusable UI components (Layouts, Navbar, Footer, Buttons).
-- `/src/i18n`: Internationalization routing configuration.
-- `/messages`: JSON dictionary files (`id.json`, `en.json`) for translations.
-- `src/proxy.ts`: Next.js 16 Proxy configuration for i18n routing.
+- `/src/app/[locale]`: Multilingual page routes.
+- `/src/components`: Reusable UI components.
+- `/messages`: Translation dictionaries (JSON).
+- `/public/images`: Localized high-quality assets.
+- `src/proxy.ts`: Next.js 16 routing proxy.
 
 ## License
 
