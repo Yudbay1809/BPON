@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PT Berlian Palm Oil Nusantara (BPON) - Corporate Website
+
+Welcome to the official corporate website repository for **PT Berlian Palm Oil Nusantara (BPON)**. This application is a high-performance, multilingual, and modern web platform built to showcase BPON's integrated palm oil business, premium products, and commitment to sustainability.
+
+## Tech Stack
+
+This project is built using modern web technologies to ensure optimal performance, SEO, and developer experience:
+
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router & Turbopack)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Internationalization (i18n)**: [next-intl](https://next-intl-docs.vercel.app/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Animations**: Framer Motion
+- **Database / ORM** (Future CMS Integration): [Prisma](https://www.prisma.io/)
+
+## Features
+
+- **Full Multilingual Support**: English (en) and Indonesian (id) routing and translation out of the box.
+- **Dynamic Routing & SEO**: Optimized for search engines with server-side rendering and dynamic locale parameters.
+- **Modern UI/UX**: Premium and vibrant design with smooth transitions and responsive layouts.
+- **Vercel Ready**: Pre-configured for seamless deployment on Vercel Edge/Serverless environments.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js (v18 or higher)
+- npm or pnpm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Yudbay1809/BPON.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd BPON
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+### Running the Development Server
+
+To start the development server with Turbopack, run:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. The application will automatically route you to the default locale (e.g., `/id`).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment on Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project is fully optimized for Vercel deployment.
 
-## Learn More
+1. Push your code to GitHub.
+2. Log in to [Vercel](https://vercel.com/) and click **Add New Project**.
+3. Import this repository from your GitHub account.
+4. **Build Settings**: Vercel will automatically detect that this is a Next.js project. The default build command (`next build`) and output directory (`.next`) are correct.
+5. **Environment Variables**: Add any necessary environment variables (e.g., `DATABASE_URL` for Prisma) in the Vercel dashboard.
+6. Click **Deploy**.
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `/src/app/[locale]`: Contains the multilingual pages (Home, About, Business, Products, Sustainability, News, Contact).
+- `/src/components`: Reusable UI components (Layouts, Navbar, Footer, Buttons).
+- `/src/i18n`: Internationalization routing configuration.
+- `/messages`: JSON dictionary files (`id.json`, `en.json`) for translations.
+- `src/proxy.ts`: Next.js 16 Proxy configuration for i18n routing.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© 2026 PT Berlian Palm Oil Nusantara. All Rights Reserved.

@@ -1,0 +1,301 @@
+Buatkan desain UI/UX website company profile untuk perusahaan agribisnis kelapa sawit dengan gaya corporate modern.
+
+Nama perusahaan:
+PT BERLIAN PALM OIL NUSANTARA
+
+---
+
+🎯 TUJUAN DESIGN
+
+- Tampilan harus terlihat seperti perusahaan besar (enterprise level)
+- Profesional, clean, dan trustworthy
+- Bukan startup style, bukan playful
+- Fokus pada kesan kuat, stabil, dan berkelas
+
+---
+
+🎨 DESIGN STYLE
+
+Gunakan pendekatan:
+- Clean corporate design
+- Industrial + natural (agribisnis sawit)
+- Minimalis dengan whitespace luas
+- Visual hierarchy kuat
+
+---
+
+🎨 COLOR PALETTE
+
+Gunakan warna:
+- Primary: Hijau tua (#1B5E20)
+- Secondary: Hijau (#4CAF50)
+- Accent: Gold (#C9A227)
+- Background: Putih / abu muda (#F5F5F5)
+- Text: Abu gelap (#333333)
+
+---
+
+🔤 TYPOGRAPHY
+
+- Gunakan font modern: Inter / Poppins
+- Heading: bold, besar
+- Body: clean, readable
+- Line-height lega
+
+---
+
+📐 LAYOUT SYSTEM
+
+- Gunakan 12-column grid
+- Max width container (1200–1400px)
+- Section padding besar (py-20)
+- Gunakan whitespace luas
+- Grid responsive (desktop, tablet, mobile)
+
+---
+
+🧱 STRUKTUR HALAMAN HOMEPAGE
+
+1. HERO SECTION
+- Full width background image (perkebunan / pabrik sawit)
+- Overlay gelap
+- Judul besar + tagline
+- CTA button
+
+---
+
+2. CORE BUSINESS (3 CARD)
+- Perkebunan
+- Produksi
+- Distribusi
+
+Design:
+- Card modern
+- Shadow soft
+- Hover naik sedikit
+
+---
+
+3. ABOUT PREVIEW
+- Layout 2 kolom
+- Kiri: teks
+- Kanan: gambar
+
+---
+
+4. PRODUK
+- Grid 3–4 kolom
+- Gunakan gambar produk
+- Card clean
+
+---
+
+5. SUSTAINABILITY
+- Background abu muda
+- Icon + teks
+- Fokus pada keberlanjutan
+
+---
+
+6. NEWS / ARTIKEL
+- Card horizontal
+- Gambar + teks
+- Layout modern
+
+---
+
+7. CTA SECTION
+- Full width
+- Background hijau
+- Call to action jelas
+
+---
+
+🧭 NAVBAR
+
+- Sticky navbar
+- Transparan saat di atas
+- Solid saat scroll
+- Menu sederhana (Home, Tentang, Bisnis, Produk, Kontak)
+
+---
+
+🦶 FOOTER
+
+- Background gelap
+- Isi:
+  - Logo
+  - Deskripsi singkat
+  - Link
+  - Kontak
+
+---
+
+🎬 ANIMASI
+
+Gunakan animasi ringan:
+- Fade in saat scroll
+- Hover effect
+- Smooth transition
+
+Jangan berlebihan, tetap corporate feel.
+
+---
+
+🖼️ IMAGE STYLE
+
+Gunakan gambar:
+- Kebun sawit
+- Pabrik
+- Distribusi/logistik
+
+Hindari:
+- Ilustrasi kartun
+- Icon berlebihan
+
+---
+
+📱 RESPONSIVE
+
+- Mobile friendly
+- Grid collapse rapi
+- Navbar jadi hamburger menu
+
+---
+
+🎯 OUTPUT YANG DIHARAPKAN
+
+- Layout desain homepage lengkap
+- Desain setiap section jelas
+- Style modern dan konsisten
+- Siap diimplementasikan ke Next.js + Tailwind
+
+---
+
+⚠️ CATATAN
+
+- Jangan copy desain website lain secara mentah
+- Gunakan pendekatan original dengan referensi corporate
+- Fokus pada trust & profesionalitas
+
+HASIL AKHIR:
+Desain website company profile yang terlihat seperti perusahaan besar, modern, clean, dan premium.
+
+Tingkatkan desain UI menjadi level premium (high-end corporate / enterprise).
+
+Fokus pada:
+
+---
+
+💎 VISUAL FEEL
+
+- Tampilan harus terasa “mahal”, eksklusif, dan profesional
+- Hindari tampilan template / generik
+- Gunakan pendekatan minimalis dengan kualitas tinggi
+
+---
+
+📐 SPACING & LAYOUT
+
+- Gunakan whitespace luas (jangan padat)
+- Section besar dengan padding tinggi (py-24 atau lebih)
+- Layout simetris dan rapi
+- Gunakan grid modern (12 column system)
+
+---
+
+🎨 WARNA & KONTRAS
+
+- Gunakan warna secara terbatas (tidak ramai)
+- Dominasi putih + hijau tua
+- Gunakan aksen gold secara halus (tidak berlebihan)
+- Pastikan kontras elegan (tidak terlalu tajam)
+
+---
+
+🖼️ IMAGE QUALITY
+
+- Gunakan gambar resolusi tinggi (industrial, perkebunan, pabrik)
+- Tambahkan overlay gradient gelap pada hero
+- Gunakan image sebagai storytelling, bukan dekorasi
+
+---
+
+🔤 TYPOGRAPHY
+
+- Gunakan font modern dan clean
+- Heading besar, tegas, dan bold
+- Gunakan line-height lega
+- Maksimal 2 jenis font
+
+---
+
+🧩 COMPONENT DESIGN
+
+- Card dengan:
+  - border tipis atau shadow sangat halus
+  - rounded medium (tidak terlalu bulat)
+- Button:
+  - solid, clean
+  - hover elegan (bukan flashy)
+
+---
+
+🎬 MICRO INTERACTION
+
+- Hover effect halus (scale kecil / shadow naik sedikit)
+- Smooth transition (0.3s ease)
+- Fade-in saat scroll
+- Hindari animasi berlebihan
+
+---
+
+🧭 NAVBAR
+
+- Transparan saat di atas
+- Blur / glass effect ringan
+- Berubah solid saat scroll
+- Tinggi navbar proporsional
+
+---
+
+🦶 FOOTER
+
+- Background gelap (dark green / hampir hitam)
+- Layout rapi multi-column
+- Terlihat “corporate”, bukan sekadar penutup
+
+---
+
+📊 VISUAL HIERARCHY
+
+- Judul → sangat menonjol
+- Subjudul → jelas
+- Body → ringan dibaca
+- CTA → terlihat penting
+
+---
+
+📱 RESPONSIVE
+
+- Mobile tetap terlihat premium
+- Spacing tetap lega (tidak sempit)
+- Layout tidak terasa “dipaksa kecil”
+
+---
+
+🎯 GOAL AKHIR
+
+Desain harus terasa seperti:
+- Website perusahaan multinasional
+- Memiliki aset besar & kredibel
+- Digarap oleh agency profesional
+
+Bukan:
+- Template gratisan
+- Website startup
+- UI terlalu ramai atau ramai animasi
+
+catatan tambahan:
+Hindari tampilan seperti template umum. Buat layout yang terasa custom, unik, dan memiliki karakter visual kuat seperti website perusahaan besar.
+Gunakan pendekatan high-end corporate design dengan fokus pada whitespace luas, typography kuat, dan visual minimalis. Hindari tampilan template dan buat layout terasa eksklusif seperti perusahaan multinasional.

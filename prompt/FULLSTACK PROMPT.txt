@@ -1,0 +1,253 @@
+Buatkan website company profile fullstack menggunakan Next.js (App Router, TypeScript, Tailwind CSS) dengan kualitas production-ready.
+
+Nama perusahaan:
+PT BERLIAN PALM OIL NUSANTARA
+
+Deskripsi:
+Perusahaan agribisnis yang bergerak di bidang perkebunan kelapa sawit, produksi CPO, dan distribusi produk turunan sawit secara berkelanjutan.
+
+Tujuan:
+Membuat website corporate profesional setara perusahaan besar (kelas enterprise seperti Sinar Mas / Astra), modern, clean, SEO-friendly, dan scalable.
+
+---
+
+🧱 1. STRUKTUR HALAMAN
+
+Buat halaman:
+- Home (/)
+- Tentang Kami (/about)
+- Bisnis Kami (/business)
+- Produk (/products)
+- Sustainability (/sustainability)
+- Berita / Artikel (/news)
+- Detail Artikel (/news/[slug])
+- Kontak (/contact)
+
+---
+
+🎨 2. DESAIN (ENTERPRISE LEVEL UI)
+
+Gunakan:
+- Clean corporate design
+- 12-column grid layout
+- Banyak whitespace
+- Full-width section
+- Hero banner dengan background image
+- Warna:
+  - Hijau (primary)
+  - Putih (base)
+  - Gold/kuning (accent)
+
+Tambahkan:
+- Sticky navbar (transparan → solid saat scroll)
+- Hover effects halus
+- Card modern dengan shadow soft
+- Typography profesional (tidak playful)
+
+---
+
+🏠 3. HOMEPAGE WAJIB ADA
+
+- Hero section (judul + tagline + CTA)
+- 3 highlight:
+  - Perkebunan
+  - Produksi
+  - Distribusi
+- Tentang singkat
+- Produk unggulan
+- Sustainability preview
+- Latest news
+- CTA section
+
+---
+
+🧩 4. KOMPONEN
+
+Buat reusable components:
+- Navbar (responsive + mobile menu)
+- Footer (corporate style)
+- Container / Section wrapper
+- Card component
+- Button component
+- Hero component
+
+Gunakan struktur modular.
+
+---
+
+⚙️ 5. TEKNOLOGI
+
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+- Gunakan best practice folder structure
+
+---
+
+🔌 6. FULLSTACK (API)
+
+Gunakan Next.js API routes:
+
+Buat endpoint:
+- POST /api/contact
+  - Validasi dengan Zod
+  - Simpan data (mock / database)
+  - Kirim email (simulasi atau pakai Resend/Nodemailer)
+
+Tambahkan:
+- Loading state
+- Error handling
+
+---
+
+🗄️ 7. DATABASE
+
+Gunakan:
+- PostgreSQL + Prisma ORM
+
+Schema:
+- ContactMessage
+- Article
+- Product
+
+Tambahkan:
+- Migration
+- Seed data
+
+---
+
+🧩 8. CMS (HEADLESS)
+
+Gunakan Sanity:
+
+- Schema:
+  - Artikel / News
+  - Produk
+  - Halaman statis
+- Integrasi fetch data ke Next.js (server components)
+- Halaman artikel dinamis (/news/[slug])
+
+---
+
+🌐 9. MULTI-LANGUAGE
+
+Gunakan next-intl:
+
+- Bahasa:
+  - Indonesia (/id)
+  - English (/en)
+- Semua konten bisa di-translate
+- Language switcher di navbar
+
+---
+
+🎬 10. ANIMASI
+
+Gunakan Framer Motion:
+
+- Fade in saat scroll
+- Smooth page transition
+- Hover animation pada card
+
+Tetap subtle & elegan (corporate feel).
+
+---
+
+⚡ 11. PERFORMANCE
+
+Optimasi:
+- next/image untuk semua gambar
+- Lazy loading
+- Dynamic import
+- next/font
+- Minimalkan bundle size
+
+Target Lighthouse score 90+
+
+---
+
+📊 12. SEO ADVANCED
+
+Tambahkan:
+- Metadata dinamis per halaman
+- Open Graph (OG)
+- Sitemap.xml
+- robots.txt
+- JSON-LD structured data
+
+---
+
+🔐 13. SECURITY
+
+- Validasi input (Zod)
+- Sanitasi data
+- Rate limiting API
+- Environment variables
+
+---
+
+🧑‍💼 14. ADMIN PANEL
+
+Buat admin dashboard (/admin):
+
+- Login (NextAuth atau JWT)
+- CRUD:
+  - Artikel
+  - Produk
+- UI sederhana (Tailwind)
+- Protected routes
+
+---
+
+📁 15. STRUKTUR FOLDER
+
+Gunakan struktur clean & scalable:
+
+src/
+ ├── app/
+ ├── components/
+ ├── lib/
+ ├── hooks/
+ ├── services/
+ ├── types/
+ ├── styles/
+
+---
+
+☁️ 16. DEPLOYMENT
+
+Siapkan untuk production:
+
+- Deploy ke Vercel
+- Setup environment variables
+- Optimasi build
+- Domain custom ready
+
+---
+
+📦 OUTPUT YANG DIHARAPKAN
+
+Berikan:
+- Struktur folder lengkap
+- Kode:
+  - layout.tsx
+  - homepage
+  - minimal 3 halaman lain
+  - komponen utama
+  - API route
+- Contoh integrasi CMS
+- Contoh Prisma schema
+- Contoh SEO config
+
+---
+
+⚠️ CATATAN
+
+- Jangan copy konten dari website lain
+- Gunakan konten original
+- Code harus clean, modular, dan scalable
+
+---
+
+HASIL AKHIR:
+Website company profile fullstack Next.js yang siap production, terlihat profesional, dan setara dengan website corporate besar.

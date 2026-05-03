@@ -1,0 +1,228 @@
+Buatkan setup project fullstack menggunakan Next.js (App Router, TypeScript, Tailwind CSS) dengan konfigurasi production-ready.
+
+Nama project:
+berlian-palm-oil
+
+---
+
+🎯 TUJUAN
+
+Membangun fondasi project yang clean, scalable, dan siap digunakan untuk website company profile enterprise.
+
+---
+
+📦 SETUP PROJECT
+
+- Gunakan Next.js App Router
+- Gunakan TypeScript
+- Gunakan Tailwind CSS
+- Gunakan ESLint
+
+---
+
+🧩 INSTALL & KONFIGURASI PLUGIN
+
+Install dan konfigurasi library berikut dengan best practice:
+
+---
+
+🎨 UI & STYLING
+
+- Tailwind CSS
+- clsx
+- tailwind-merge
+- lucide-react (icon)
+
+Tambahkan:
+- shadcn/ui
+- Setup komponen:
+  - button
+  - card
+  - input
+  - form
+  - dialog
+
+---
+
+📩 FORM & VALIDATION
+
+- react-hook-form
+- zod
+- @hookform/resolvers
+
+Gunakan:
+- Validasi schema dengan Zod
+- Integrasi ke form
+
+---
+
+🎬 ANIMASI
+
+- framer-motion
+
+Gunakan untuk:
+- fade-in
+- hover effect
+- smooth transition
+
+---
+
+🗄️ DATABASE
+
+Gunakan:
+- PostgreSQL
+- Prisma ORM
+
+Buat schema:
+- ContactMessage
+- Article
+- Product
+
+Tambahkan:
+- migration
+- prisma client setup
+
+---
+
+🔌 API (FULLSTACK)
+
+Gunakan Next.js API routes:
+
+Buat endpoint:
+- POST /api/contact
+
+Fitur:
+- Validasi Zod
+- Simpan ke database
+- Error handling
+- Response JSON
+
+---
+
+🌐 MULTI-LANGUAGE
+
+Gunakan:
+- next-intl
+
+Setup:
+- Bahasa Indonesia & English
+- Struktur route /id dan /en
+- File translation
+
+---
+
+🧠 STATE MANAGEMENT
+
+Gunakan:
+- Zustand
+
+Untuk:
+- global state ringan
+
+---
+
+⚡ DATA FETCHING
+
+Gunakan:
+- @tanstack/react-query
+
+Untuk:
+- caching data
+- fetch API
+
+---
+
+🔐 AUTHENTICATION
+
+Gunakan:
+- Auth.js (NextAuth)
+
+Fitur:
+- Login sederhana
+- Proteksi route /admin
+
+---
+
+🧩 CMS
+
+Gunakan:
+- Sanity (headless CMS)
+
+Fitur:
+- schema artikel
+- fetch data ke Next.js
+- halaman dinamis
+
+---
+
+📊 SEO
+
+Tambahkan:
+- next-sitemap
+- metadata Next.js
+- Open Graph config
+
+---
+
+📈 PERFORMANCE
+
+Gunakan:
+- @next/bundle-analyzer
+
+Optimasi:
+- next/image
+- dynamic import
+- lazy loading
+
+---
+
+🧪 TESTING (optional)
+
+Gunakan:
+- Vitest
+- Playwright
+
+---
+
+📁 STRUKTUR FOLDER
+
+Gunakan struktur clean:
+
+src/
+ ├── app/
+ ├── components/
+ ├── lib/
+ ├── hooks/
+ ├── store/
+ ├── services/
+ ├── types/
+ ├── styles/
+
+---
+
+⚙️ OUTPUT YANG DIHARAPKAN
+
+Berikan:
+- Perintah install lengkap (npm)
+- Struktur folder final
+- Contoh file:
+  - prisma schema
+  - API route
+  - konfigurasi plugin utama
+- Setup yang clean & modular
+
+---
+
+⚠️ CATATAN
+
+- Gunakan best practice Next.js terbaru
+- Jangan over-engineering
+- Code harus readable dan scalable
+
+---
+
+HASIL AKHIR:
+
+Project Next.js fullstack dengan semua plugin penting sudah terinstall dan siap dikembangkan menjadi website corporate profesional.
+Pastikan hanya menggunakan konfigurasi yang benar-benar diperlukan. Hindari setup yang terlalu kompleks atau tidak digunakan.
+Strukturkan project seperti production environment di perusahaan besar dengan clean architecture dan separation of concerns.
