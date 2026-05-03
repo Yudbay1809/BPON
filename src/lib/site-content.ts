@@ -28,12 +28,12 @@ export const getSiteShellContent = cache(async (locale: string) => {
         links: group.links.map((link) => ({
           label: pickLocalizedValue(normalizedLocale, link),
           href: link.href,
-          external: link.external ?? false,
+          external: 'external' in link ? Boolean(link.external) : false,
         })),
       })),
       certificationsLabel: pickLocalizedValue(normalizedLocale, siteContent.footer.certificationsLabel),
-      certifications: siteContent.footer.certifications,
-      socials: siteContent.footer.socials,
+      certifications: [...siteContent.footer.certifications],
+      socials: siteContent.footer.socials.map((social) => ({ ...social })),
       contact: {
         headquartersLabel: pickLocalizedValue(normalizedLocale, siteContent.footer.contact.headquartersLabel),
         address: pickLocalizedValue(normalizedLocale, siteContent.footer.contact.address),
@@ -41,14 +41,14 @@ export const getSiteShellContent = cache(async (locale: string) => {
         phoneNumber: siteContent.footer.contact.phoneNumber,
         officeHours: pickLocalizedValue(normalizedLocale, siteContent.footer.contact.officeHours),
         emailLabel: pickLocalizedValue(normalizedLocale, siteContent.footer.contact.emailLabel),
-        emails: siteContent.footer.contact.emails,
+        emails: [...siteContent.footer.contact.emails],
       },
       legal: {
         rights: pickLocalizedValue(normalizedLocale, siteContent.footer.legal.rights),
         links: siteContent.footer.legal.links.map((link) => ({
           label: pickLocalizedValue(normalizedLocale, link),
           href: link.href,
-          external: link.external ?? false,
+          external: 'external' in link ? Boolean(link.external) : false,
         })),
       },
     },

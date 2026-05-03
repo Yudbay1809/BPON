@@ -129,7 +129,7 @@ export const siteContent = {
       links: [
         { id: 'Kebijakan Privasi', en: 'Privacy Policy', href: '/privacy' },
         { id: 'Syarat & Ketentuan', en: 'Terms & Conditions', href: '/terms' },
-        { id: 'Sitemap', en: 'Sitemap', href: '/sitemap.xml' },
+        { id: 'Sitemap', en: 'Sitemap', href: '/sitemap.xml', external: true },
       ] satisfies LocalizedLink[],
     },
   },

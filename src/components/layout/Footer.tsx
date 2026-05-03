@@ -10,7 +10,7 @@ type FooterProps = {
       links: Array<{ label: string; href: string; external: boolean }>;
     }>;
     certificationsLabel: string;
-    certifications: string[];
+    certifications: readonly string[];
     socials: Array<{ label: string; href: string | null }>;
     contact: {
       headquartersLabel: string;
@@ -91,9 +91,15 @@ export function Footer({ content }: FooterProps) {
               <ul className="space-y-3">
                 {group.links.map((link) => (
                   <li key={link.label}>
-                    <Link href={link.href as never} className="text-sm text-white/55 hover:text-white transition-colors cursor-pointer">
-                      {link.label}
-                    </Link>
+                    {link.external ? (
+                      <a href={link.href} className="text-sm text-white/55 hover:text-white transition-colors cursor-pointer">
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link href={link.href as never} className="text-sm text-white/55 hover:text-white transition-colors cursor-pointer">
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -136,9 +142,15 @@ export function Footer({ content }: FooterProps) {
             {content.legal.links.map((link, index) => (
               <div key={link.href} className="flex items-center gap-5">
                 {index > 0 && <span>|</span>}
-                <Link href={link.href as never} className="hover:text-white/70 transition-colors cursor-pointer">
-                  {link.label}
-                </Link>
+                {link.external ? (
+                  <a href={link.href} className="hover:text-white/70 transition-colors cursor-pointer">
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link href={link.href as never} className="hover:text-white/70 transition-colors cursor-pointer">
+                    {link.label}
+                  </Link>
+                )}
               </div>
             ))}
           </div>

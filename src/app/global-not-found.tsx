@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import { Home, Search } from 'lucide-react';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: '404 — Halaman Tidak Ditemukan | BPON',
+  title: '404 - Halaman Tidak Ditemukan | BPON',
   description: 'Halaman yang Anda cari tidak ditemukan.',
 };
 
@@ -93,20 +93,18 @@ export default function GlobalNotFound() {
           <div className="num-404">404</div>
           <div className="badge">PT Berlian Palm Oil Nusantara</div>
           <h1>Halaman Tidak Ditemukan</h1>
-          <p>
-            Halaman yang Anda cari tidak tersedia atau telah dipindahkan. Silakan kembali ke beranda.
-          </p>
+          <p>Halaman yang Anda cari tidak tersedia atau telah dipindahkan. Silakan kembali ke beranda.</p>
           <div className="actions">
-            <a href="/id" className="btn-primary">
-              🏠 Kembali ke Beranda
-            </a>
+            <Link href="/id" className="btn-primary">
+              Kembali ke Beranda
+            </Link>
           </div>
           <div className="divider" />
           <div className="quick-links">
-            <a href="/id/about" className="quick-link">Tentang Kami</a>
-            <a href="/id/products" className="quick-link">Produk</a>
-            <a href="/id/business" className="quick-link">Bisnis</a>
-            <a href="/id/contact" className="quick-link">Kontak</a>
+            <Link href="/id/about" className="quick-link">Tentang Kami</Link>
+            <Link href="/id/products" className="quick-link">Produk</Link>
+            <Link href="/id/business" className="quick-link">Bisnis</Link>
+            <Link href="/id/contact" className="quick-link">Kontak</Link>
           </div>
         </div>
       </body>

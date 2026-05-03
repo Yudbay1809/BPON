@@ -1,6 +1,6 @@
 'use client';
 
-import { RefreshCw, Home } from 'lucide-react';
+import Link from 'next/link';
 
 export default function GlobalError({
   error,
@@ -12,7 +12,7 @@ export default function GlobalError({
   return (
     <html lang="id">
       <head>
-        <title>Terjadi Kesalahan — BPON</title>
+        <title>Terjadi Kesalahan - BPON</title>
         <meta name="robots" content="noindex" />
         <style>{`
           * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,6 +35,7 @@ export default function GlobalError({
             display: flex; align-items: center; justify-content: center;
             margin: 0 auto 2rem;
             font-size: 2rem;
+            font-weight: 800;
           }
           .badge {
             display: inline-block;
@@ -79,20 +80,18 @@ export default function GlobalError({
       </head>
       <body>
         <div className="container">
-          <div className="icon">🔥</div>
+          <div className="icon">!</div>
           <div className="badge">PT Berlian Palm Oil Nusantara</div>
           <h1>Aplikasi Mengalami Masalah</h1>
           <p>Terjadi kesalahan kritis pada sistem. Tim teknis kami sedang menangani masalah ini.</p>
-          {error.digest && (
-            <p className="digest">Error ID: {error.digest}</p>
-          )}
+          {error.digest && <p className="digest">Error ID: {error.digest}</p>}
           <div className="actions">
             <button onClick={() => unstable_retry()} className="btn-primary">
-              🔄 Coba Lagi
+              Coba Lagi
             </button>
-            <a href="/" className="btn-secondary">
-              🏠 Beranda
-            </a>
+            <Link href="/" className="btn-secondary">
+              Beranda
+            </Link>
           </div>
         </div>
       </body>
