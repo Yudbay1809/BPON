@@ -2,10 +2,11 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { routing } from '@/i18n/routing';
-import { Navbar } from '@/components/layout/Navbar';
-import { Footer } from '@/components/layout/Footer';
 import { Lexend, Source_Sans_3 } from 'next/font/google';
+import { Footer } from '@/components/layout/Footer';
+import { Navbar } from '@/components/layout/Navbar';
+import { routing } from '@/i18n/routing';
+import { getSiteShellContent } from '@/lib/site-content';
 import '../globals.css';
 
 const lexend = Lexend({
@@ -21,10 +22,12 @@ const sourceSans = Source_Sans_3({
 });
 
 export async function generateMetadata(props: { params: Promise<{ locale: string }> }) {
-  await props.params;
+  const params = await props.params;
+  const content = await getSiteShellContent(params.locale);
+
   return {
-    title: 'PT BERLIAN PALM OIL NUSANTARA',
-    description: 'Corporate Profile of PT BERLIAN PALM OIL NUSANTARA',
+    title: content.metadata.title,
+    description: content.metadata.description,
   };
 }
 
@@ -40,19 +43,20 @@ export default async function LocaleLayout(props: {
     notFound();
   }
 
-  // Providing all messages to the client
-  // side is the easiest way to get started
-  const messages = await getMessages();
+  const [messages, shellContent] = await Promise.all([
+    getMessages(),
+    getSiteShellContent(locale),
+  ]);
 
   return (
     <html lang={locale}>
       <body className={`${lexend.variable} ${sourceSans.variable} font-body min-h-screen flex flex-col bg-background text-foreground antialiased`}>
         <NextIntlClientProvider messages={messages}>
-          <Navbar />
+          <Navbar content={shellContent.navbar} />
           <main className="flex-1">
             {children}
           </main>
-          <Footer />
+          <Footer content={shellContent.footer} />
         </NextIntlClientProvider>
       </body>
     </html>

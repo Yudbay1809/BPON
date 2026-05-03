@@ -2,12 +2,24 @@
 
 import { useState, useEffect } from 'react';
 import { Link, usePathname } from '@/i18n/routing';
-import { useTranslations } from 'next-intl';
 import { Menu, X, Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { BPONWordmark } from '@/components/ui/logo';
 
-export function Navbar() {
+type NavbarProps = {
+  content: {
+    links: Array<{ label: string; href: string }>;
+    contactCta: { label: string; href: string };
+    localeLabels: {
+      idShort: string;
+      enShort: string;
+      idLong: string;
+      enLong: string;
+    };
+  };
+};
+
+export function Navbar({ content }: NavbarProps) {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -18,16 +30,7 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const t = useTranslations('Navbar');
-
-  const navLinks = [
-    { name: t('home'), href: '/' },
-    { name: t('about'), href: '/about' },
-    { name: t('business'), href: '/business' },
-    { name: t('products'), href: '/products' },
-    { name: t('sustainability'), href: '/sustainability' },
-    { name: t('news'), href: '/news' },
-  ];
+  const navLinks = content.links;
 
   return (
     <header
@@ -56,7 +59,7 @@ export function Navbar() {
           <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
-                key={link.name}
+                key={link.label}
                 href={link.href as never}
                 className={cn(
                   'px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 cursor-pointer',
@@ -68,7 +71,7 @@ export function Navbar() {
                     : 'bg-white/15 text-white')
                 )}
               >
-                {link.name}
+                {link.label}
               </Link>
             ))}
           </nav>
@@ -78,16 +81,16 @@ export function Navbar() {
             {/* Language */}
             <div className={cn('flex items-center gap-1 text-sm font-semibold', isScrolled ? 'text-gray-800' : 'text-white')}>
               <Globe className="w-4 h-4 opacity-60" />
-              <Link href={pathname as never} locale="id" className="hover:text-primary transition-colors cursor-pointer">ID</Link>
+              <Link href={pathname as never} locale="id" className="hover:text-primary transition-colors cursor-pointer">{content.localeLabels.idShort}</Link>
               <span className="opacity-30">|</span>
-              <Link href={pathname as never} locale="en" className="hover:text-primary transition-colors cursor-pointer">EN</Link>
+              <Link href={pathname as never} locale="en" className="hover:text-primary transition-colors cursor-pointer">{content.localeLabels.enShort}</Link>
             </div>
             {/* CTA Button */}
             <Link
-              href="/contact"
+              href={content.contactCta.href as never}
               className="px-5 py-2.5 bg-primary hover:bg-primary/90 text-white text-sm font-bold rounded-lg transition-colors cursor-pointer shadow-sm"
             >
-              {t('contact')}
+              {content.contactCta.label}
             </Link>
           </div>
 
@@ -112,7 +115,7 @@ export function Navbar() {
         <nav className="flex flex-col gap-1 mt-4">
           {navLinks.map((link) => (
             <Link
-              key={link.name}
+              key={link.label}
               href={link.href as never}
               onClick={() => setIsMobileMenuOpen(false)}
               className={cn(
@@ -122,7 +125,7 @@ export function Navbar() {
                   : 'text-gray-800 hover:bg-gray-50'
               )}
             >
-              {link.name}
+              {link.label}
             </Link>
           ))}
         </nav>
@@ -130,16 +133,16 @@ export function Navbar() {
         <div className="mt-8 pt-6 border-t border-gray-100 space-y-4">
           <div className="flex items-center gap-3 text-sm font-semibold text-gray-500">
             <Globe className="w-4 h-4" />
-            <Link href={pathname as never} locale="id" className="text-gray-900 font-bold cursor-pointer" onClick={() => setIsMobileMenuOpen(false)}>Indonesia</Link>
+            <Link href={pathname as never} locale="id" className="text-gray-900 font-bold cursor-pointer" onClick={() => setIsMobileMenuOpen(false)}>{content.localeLabels.idLong}</Link>
             <span className="text-gray-300">|</span>
-            <Link href={pathname as never} locale="en" className="hover:text-primary cursor-pointer" onClick={() => setIsMobileMenuOpen(false)}>English</Link>
+            <Link href={pathname as never} locale="en" className="hover:text-primary cursor-pointer" onClick={() => setIsMobileMenuOpen(false)}>{content.localeLabels.enLong}</Link>
           </div>
           <Link
-            href="/contact"
+            href={content.contactCta.href as never}
             onClick={() => setIsMobileMenuOpen(false)}
             className="block w-full text-center px-5 py-3.5 bg-primary text-white font-bold rounded-xl cursor-pointer"
           >
-            {t('contact')}
+            {content.contactCta.label}
           </Link>
         </div>
       </div>
