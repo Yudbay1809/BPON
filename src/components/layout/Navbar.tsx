@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Link, usePathname } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
-import { Menu, X, Globe, ChevronDown } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { BPONWordmark } from '@/components/ui/logo';
 
