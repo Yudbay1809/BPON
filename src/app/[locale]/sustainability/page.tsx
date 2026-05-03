@@ -77,7 +77,7 @@ export default async function SustainabilityPage(props: { params: Promise<{ loca
       <section className="relative h-72 md:h-96 flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&q=80&w=2000"
+            src="/images/hero-sustainability.jpg"
             alt="Green Forest Sustainability"
             fill
             className="object-cover"

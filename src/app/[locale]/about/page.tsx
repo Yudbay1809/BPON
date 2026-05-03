@@ -31,7 +31,7 @@ export default async function AboutPage(props: { params: Promise<{ locale: strin
       <section className="relative h-72 md:h-96 flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000"
+            src="/images/hero-about.jpg"
             alt="BPON Headquarters"
             fill
             className="object-cover"
@@ -111,7 +111,7 @@ export default async function AboutPage(props: { params: Promise<{ locale: strin
             </div>
             <div className="relative h-[540px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&q=80&w=1000"
+                src="/images/hero-sustainability.jpg"
                 alt="BPON Plantation"
                 fill
                 className="object-cover"

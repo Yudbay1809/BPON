@@ -21,7 +21,7 @@ export default async function BusinessPage(props: { params: Promise<{ locale: st
         'Sistem irigasi modern berbasis IoT untuk optimasi produksi',
         'Pembibitan bersertifikat dengan produktivitas 30-35 ton TBS/ha/tahun',
       ],
-      imgSrc: 'https://images.unsplash.com/photo-1542845876-0bf84b80b067?auto=format&fit=crop&q=80&w=1000',
+      imgSrc: '/images/biz-plantation.jpg',
     },
     {
       icon: Factory,
@@ -35,7 +35,7 @@ export default async function BusinessPage(props: { params: Promise<{ locale: st
         'Fasilitas laboratorium QC terakreditasi ISO/IEC 17025',
         'Kapasitas refinery 1 juta ton per tahun untuk produk hilir',
       ],
-      imgSrc: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000',
+      imgSrc: '/images/biz-processing.jpg',
     },
     {
       icon: Truck,
@@ -49,7 +49,7 @@ export default async function BusinessPage(props: { params: Promise<{ locale: st
         'Fasilitas tangki penyimpanan 300.000 ton di 4 pelabuhan utama',
         'Sistem manajemen rantai pasok (SCM) real-time berbasis digital',
       ],
-      imgSrc: 'https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&q=80&w=1000',
+      imgSrc: '/images/biz-distribution.jpg',
     },
   ];
 
@@ -67,7 +67,7 @@ export default async function BusinessPage(props: { params: Promise<{ locale: st
       <section className="relative h-72 md:h-96 flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2000"
+            src="/images/hero-business.jpg"
             alt="BPON Operations"
             fill
             className="object-cover"

@@ -23,7 +23,7 @@ export default async function ProductsPage(props: { params: Promise<{ locale: st
         { label: 'Melting Point', value: '33–39°C' },
       ],
       applications: ['Industri Pangan & Minyak Goreng', 'Industri Biodiesel', 'Industri Oleokimia', 'Sabun & Deterjen'],
-      imgSrc: 'https://images.unsplash.com/photo-1509483894043-c68e1f15e875?auto=format&fit=crop&q=80&w=800',
+      imgSrc: '/images/prod-cpo.jpg',
     },
     {
       id: 'pko',
@@ -39,7 +39,7 @@ export default async function ProductsPage(props: { params: Promise<{ locale: st
         { label: 'Melting Point', value: '24–26°C' },
       ],
       applications: ['Industri Kosmetik & Perawatan', 'Produk Bayi & Susu Formula', 'Oleokimia Khusus', 'Industri Farmasi'],
-      imgSrc: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&q=80&w=800',
+      imgSrc: '/images/prod-pko.jpg',
     },
     {
       id: 'olein',
@@ -55,7 +55,7 @@ export default async function ProductsPage(props: { params: Promise<{ locale: st
         { label: 'Peroxide Value', value: '≤ 1 meq/kg' },
       ],
       applications: ['Minyak Goreng Retail & Curah', 'Industri Snack & Makanan', 'Margarin & Shortening', 'Industri Roti & Kue'],
-      imgSrc: 'https://images.unsplash.com/photo-1473183609-7fc1ee3da18a?auto=format&fit=crop&q=80&w=800',
+      imgSrc: '/images/prod-olein.jpg',
     },
     {
       id: 'stearin',
@@ -71,7 +71,7 @@ export default async function ProductsPage(props: { params: Promise<{ locale: st
         { label: 'Peroxide Value', value: '≤ 1 meq/kg' },
       ],
       applications: ['Margarin & Shortening', 'Cokelat & Confectionery', 'Sabun Batang', 'Biodiesel Campuran'],
-      imgSrc: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&q=80&w=800',
+      imgSrc: '/images/prod-stearin.jpg',
     },
   ];
 
@@ -84,7 +84,7 @@ export default async function ProductsPage(props: { params: Promise<{ locale: st
       <section className="relative h-72 md:h-96 flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1509483894043-c68e1f15e875?auto=format&fit=crop&q=80&w=2000"
+            src="/images/hero-products.jpg"
             alt="Palm Oil Products"
             fill
             className="object-cover"

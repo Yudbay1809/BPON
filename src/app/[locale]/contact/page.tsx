@@ -66,7 +66,7 @@ export default function ContactPage() {
       <section className="relative h-72 md:h-80 flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000"
+            src="/images/hero-contact.jpg"
             alt="Contact BPON"
             fill
             className="object-cover"

@@ -80,7 +80,7 @@ export default async function HomePage(props: { params: Promise<{ locale: string
       <section className="relative h-screen min-h-[700px] w-full flex items-end justify-start overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1542845876-0bf84b80b067?auto=format&fit=crop&q=80&w=2000"
+            src="/images/hero-plantation.jpg"
             alt="Palm Oil Plantation Aerial View"
             fill
             className="object-cover"
@@ -178,7 +178,7 @@ export default async function HomePage(props: { params: Promise<{ locale: string
             <div className="relative">
               <div className="relative h-[560px] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1000"
+                  src="/images/about-building.jpg"
                   alt="BPON Corporate Headquarters"
                   fill
                   className="object-cover"
@@ -254,7 +254,7 @@ export default async function HomePage(props: { params: Promise<{ locale: string
       <section className="py-28 relative overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&q=80&w=2000"
+            src="/images/hero-sustainability.jpg"
             alt="Green Forest"
             fill
             className="object-cover"

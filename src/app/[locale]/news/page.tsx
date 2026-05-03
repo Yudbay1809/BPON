@@ -13,7 +13,7 @@ export default async function NewsPage(props: { params: Promise<{ locale: string
     category: 'Korporat',
     title: 'BPON Raih Penghargaan RSPO Excellence in Sustainable Palm Oil 2025',
     excerpt: 'PT Berlian Palm Oil Nusantara kembali meraih penghargaan bergengsi dari Roundtable on Sustainable Palm Oil (RSPO) untuk kategori Excellence in Sustainable Palm Oil Production. Penghargaan ini diberikan atas komitmen BPON dalam menjalankan praktik perkebunan yang bertanggung jawab selama lebih dari satu dekade.',
-    imgSrc: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80&w=1200',
+    imgSrc: '/images/news-featured.jpg',
   };
 
   const articles = [
@@ -22,42 +22,42 @@ export default async function NewsPage(props: { params: Promise<{ locale: string
       category: 'Operasional',
       title: 'Ekspansi Fasilitas Pengolahan CPO di Kalimantan Timur Resmi Beroperasi',
       excerpt: 'Pabrik pengolahan terbaru dengan kapasitas 500.000 ton per tahun mulai beroperasi, meningkatkan total kapasitas produksi BPON menjadi 2,5 juta ton per tahun.',
-      imgSrc: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600',
+      imgSrc: '/images/news-expansion.jpg',
     },
     {
       date: 'Maret 20, 2025',
       category: 'Sustainability',
       title: 'BPON Luncurkan Program Replanting Sawit Ramah Lingkungan 15.000 Ha',
       excerpt: 'Program peremajaan kebun seluas 15.000 hektar menggunakan bibit unggul rendah karbon untuk mendukung target net-zero 2040 sesuai Paris Agreement.',
-      imgSrc: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&q=80&w=600',
+      imgSrc: '/images/news-sustainability.jpg',
     },
     {
       date: 'Maret 5, 2025',
       category: 'Finansial',
       title: 'BPON Catat Pertumbuhan Pendapatan 12,3% di Tahun 2024',
       excerpt: 'Perusahaan mencatat pendapatan Rp 28,5 triliun pada FY2024, ditopang oleh peningkatan volume produksi dan kenaikan harga CPO di pasar global.',
-      imgSrc: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=600',
+      imgSrc: '/images/news-finance.jpg',
     },
     {
       date: 'Februari 18, 2025',
       category: 'CSR',
       title: 'Program Beasiswa BPON 2025 Buka Pendaftaran untuk 500 Mahasiswa',
       excerpt: 'BPON membuka pendaftaran beasiswa penuh untuk mahasiswa berprestasi di jurusan pertanian, teknik kimia, dan manajemen lingkungan dari 10 universitas mitra.',
-      imgSrc: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=600',
+      imgSrc: '/images/news-scholarship.jpg',
     },
     {
       date: 'Januari 30, 2025',
       category: 'Korporat',
       title: 'BPON Tandatangani MoU Ekspor CPO dengan Konsorsium Eropa Senilai USD 500 Juta',
       excerpt: 'Perjanjian kerjasama multitahun ini membuktikan kepercayaan pasar global terhadap kualitas dan sertifikasi produk sawit berkelanjutan dari BPON.',
-      imgSrc: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&q=80&w=600',
+      imgSrc: '/images/news-mou.jpg',
     },
     {
       date: 'Januari 12, 2025',
       category: 'Inovasi',
       title: 'BPON Investasi Rp 500 Miliar untuk Digitalisasi Operasional Kebun',
       excerpt: 'Transformasi digital mencakup implementasi IoT sensor, drone monitoring, dan platform AI untuk optimasi yield perkebunan di semua unit kebun BPON.',
-      imgSrc: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600',
+      imgSrc: '/images/news-digital.jpg',
     },
   ];
 
@@ -77,7 +77,7 @@ export default async function NewsPage(props: { params: Promise<{ locale: string
       <section className="relative h-72 md:h-80 flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80&w=2000"
+            src="/images/hero-news.jpg"
             alt="BPON News"
             fill
             className="object-cover"
