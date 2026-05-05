@@ -24,7 +24,7 @@ export default async function HomePage(props: { params: Promise<{ locale: string
   const sustainabilityIcons = [Globe, Users, TrendingUp, Award];
 
   return (
-    <div className="w-full">
+    <div className="w-full overflow-x-hidden">
       <section className="relative h-screen min-h-[700px] w-full flex items-end justify-start overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
@@ -41,10 +41,10 @@ export default async function HomePage(props: { params: Promise<{ locale: string
         <div className="relative z-10 w-full pb-24 md:pb-32">
           <div className="container mx-auto px-4 md:px-8 max-w-7xl">
             <div className="max-w-3xl">
-              <p className="text-accent font-semibold tracking-widest uppercase text-sm mb-4">
+              <p className="text-accent font-semibold tracking-widest uppercase text-xs sm:text-sm mb-4">
                 {t('hero_subtitle')}
               </p>
-              <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
                 {t('hero_title_1')}
                 <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C9A227] to-[#F0D060]">
@@ -53,10 +53,10 @@ export default async function HomePage(props: { params: Promise<{ locale: string
                 <br />
                 {t('hero_title_2')}
               </h1>
-              <p className="text-lg md:text-xl text-gray-300 max-w-xl mb-10 font-light leading-relaxed">
+              <p className="text-base md:text-xl text-gray-300 max-w-xl mb-10 font-light leading-relaxed">
                 {t('hero_desc')}
               </p>
-              <div className="flex flex-col sm:flex-row items-start gap-4">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-4">
                 <Link
                   href="/about"
                   className={cn(
@@ -86,9 +86,9 @@ export default async function HomePage(props: { params: Promise<{ locale: string
             <div className="container mx-auto px-4 md:px-8 max-w-7xl">
               <div className="grid grid-cols-2 md:grid-cols-4">
                 {copy.stats.map((stat, index) => (
-                  <div key={index} className="py-5 px-6 text-center border-r border-white/20 last:border-0">
-                    <p className="text-3xl font-bold text-accent">{stat.value}</p>
-                    <p className="text-white/70 text-sm mt-1">{stat.label}</p>
+                  <div key={index} className="py-4 px-2 sm:py-5 sm:px-6 text-center border-r border-white/20 last:border-0">
+                    <p className="text-2xl sm:text-3xl font-bold text-accent">{stat.value}</p>
+                    <p className="text-white/70 text-[10px] sm:text-sm mt-1">{stat.label}</p>
                   </div>
                 ))}
               </div>
@@ -99,9 +99,9 @@ export default async function HomePage(props: { params: Promise<{ locale: string
 
       <section className="py-28 bg-white">
         <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-          <div className="mb-16 max-w-2xl">
-            <p className="text-accent font-bold tracking-widest uppercase text-sm mb-3">{copy.coreBusiness.tag}</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
+          <div className="mb-12 md:mb-16 max-w-2xl">
+            <p className="text-accent font-bold tracking-widest uppercase text-xs sm:text-sm mb-3">{copy.coreBusiness.tag}</p>
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground leading-tight">
               {copy.coreBusiness.titleLines[0]}
               <br />
               {copy.coreBusiness.titleLines[1]}
@@ -136,9 +136,9 @@ export default async function HomePage(props: { params: Promise<{ locale: string
 
       <section className="py-28 bg-[#F5F5F5]">
         <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div className="relative">
-              <div className="relative h-[560px] rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative h-[400px] md:h-[560px] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/images/about-building.jpg"
                   alt={copy.about.imageAlt}
@@ -146,9 +146,9 @@ export default async function HomePage(props: { params: Promise<{ locale: string
                   className="object-cover"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 bg-primary text-white rounded-2xl p-6 shadow-xl max-w-[220px]">
-                <p className="text-5xl font-bold">35+</p>
-                <p className="text-white/80 text-sm mt-1">{copy.about.floatingStat}</p>
+              <div className="absolute bottom-4 right-4 md:-bottom-6 md:-right-6 bg-primary text-white rounded-2xl p-4 md:p-6 shadow-xl max-w-[160px] md:max-w-[220px]">
+                <p className="text-3xl md:text-5xl font-bold">35+</p>
+                <p className="text-white/80 text-[10px] md:text-sm mt-1">{copy.about.floatingStat}</p>
               </div>
             </div>
 
@@ -183,8 +183,8 @@ export default async function HomePage(props: { params: Promise<{ locale: string
         <div className="container mx-auto px-4 md:px-8 max-w-7xl">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div>
-              <p className="text-accent font-bold tracking-widest uppercase text-sm mb-3">{copy.products.tag}</p>
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground">{copy.products.title}</h2>
+              <p className="text-accent font-bold tracking-widest uppercase text-xs sm:text-sm mb-3">{copy.products.tag}</p>
+              <h2 className="text-3xl md:text-5xl font-bold text-foreground">{copy.products.title}</h2>
             </div>
             <Link href="/products" className={cn(buttonVariants({ variant: 'outline' }), 'border-primary text-primary hover:bg-primary hover:text-white')}>
               {copy.products.more}
@@ -216,10 +216,10 @@ export default async function HomePage(props: { params: Promise<{ locale: string
           <div className="absolute inset-0 bg-[#1A0505]/90" />
         </div>
         <div className="relative z-10 container mx-auto px-4 md:px-8 max-w-7xl">
-          <div className="text-center mb-16">
-            <p className="text-accent font-bold tracking-widest uppercase text-sm mb-3">{copy.sustainability.tag}</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">{copy.sustainability.title}</h2>
-            <p className="text-white/70 max-w-2xl mx-auto text-lg">{copy.sustainability.desc}</p>
+          <div className="text-center mb-12 md:mb-16">
+            <p className="text-accent font-bold tracking-widest uppercase text-xs sm:text-sm mb-3">{copy.sustainability.tag}</p>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">{copy.sustainability.title}</h2>
+            <p className="text-white/70 max-w-2xl mx-auto text-base md:text-lg px-4">{copy.sustainability.desc}</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {copy.sustainability.items.map((item, index) => {
@@ -278,14 +278,14 @@ export default async function HomePage(props: { params: Promise<{ locale: string
         </div>
       </section>
 
-      <section className="py-28 bg-primary">
-        <div className="container mx-auto px-4 md:px-8 max-w-7xl text-center">
-          <p className="text-accent font-bold tracking-widest uppercase text-sm mb-4">{t('cta_tag')}</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 max-w-3xl mx-auto leading-tight">
+      <section className="py-20 md:py-28 bg-primary">
+        <div className="container mx-auto px-6 md:px-8 max-w-7xl text-center">
+          <p className="text-accent font-bold tracking-widest uppercase text-xs sm:text-sm mb-4">{t('cta_tag')}</p>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 max-w-3xl mx-auto leading-tight">
             {t('cta_title')}
           </h2>
-          <p className="text-white/70 text-lg mb-10 max-w-2xl mx-auto">{t('cta_desc')}</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <p className="text-white/70 text-base md:text-lg mb-10 max-w-2xl mx-auto">{t('cta_desc')}</p>
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 px-4 sm:px-0">
             <Link href="/contact" className={cn(buttonVariants({ size: 'lg' }), 'bg-accent hover:bg-accent/90 text-white font-bold px-10 h-12 text-base')}>
               {t('cta_btn_contact')}
               <ArrowRight className="ml-2 w-4 h-4" />

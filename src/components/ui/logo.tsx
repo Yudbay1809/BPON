@@ -45,7 +45,7 @@ export function BPONWordmark({
           BPON
         </span>
         {showTagline && (
-          <span className={`text-xs font-medium leading-none mt-0.5 block ${subTextClass}`}>
+          <span className={`text-[10px] sm:text-xs font-medium leading-none mt-0.5 block ${subTextClass} hidden sm:block`}>
             Berlian Palm Oil Nusantara
           </span>
         )}
