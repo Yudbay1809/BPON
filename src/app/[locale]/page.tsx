@@ -25,7 +25,7 @@ export default async function HomePage(props: { params: Promise<{ locale: string
 
   return (
     <div className="w-full overflow-x-hidden">
-      <section className="relative h-screen min-h-[700px] w-full flex items-end justify-start overflow-hidden">
+      <section className="relative h-screen min-h-[650px] sm:min-h-[700px] w-full flex items-center sm:items-end justify-start overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/hero-plantation.jpg"
@@ -38,7 +38,7 @@ export default async function HomePage(props: { params: Promise<{ locale: string
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         </div>
 
-        <div className="relative z-10 w-full pb-24 md:pb-32">
+        <div className="relative z-10 w-full pb-48 sm:pb-32">
           <div className="container mx-auto px-4 md:px-8 max-w-7xl">
             <div className="max-w-3xl">
               <p className="text-accent font-semibold tracking-widest uppercase text-xs sm:text-sm mb-4">
