@@ -9,7 +9,7 @@ type SustainabilitySectionProps = {
     tag: string;
     title: string;
     desc: string;
-    items: Array<{ title: string; desc: string }>;
+    items: ReadonlyArray<{ readonly title: string; readonly desc: string }>;
     cta: string;
   };
 };

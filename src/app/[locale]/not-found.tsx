@@ -1,7 +1,10 @@
-import { Link } from '@/i18n/routing';
+import { Link, getPathname } from '@/i18n/routing';
 import { Home, ArrowLeft, Search } from 'lucide-react';
 
-export default function NotFound() {
+export default async function NotFound(props: { params: Promise<{ locale: string }> }) {
+  const params = await props.params;
+  const locale = params.locale;
+
   return (
     <div className="min-h-screen bg-[#0d0505] flex items-center justify-center px-4 relative overflow-hidden">
       {/* Background decoration */}
@@ -49,14 +52,14 @@ export default function NotFound() {
         {/* Actions */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
-            href="/"
+            href={`/${locale}` as never}
             className="inline-flex items-center gap-2 bg-[#B91C1C] hover:bg-[#991B1B] text-white font-bold px-8 py-3.5 rounded-xl transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg shadow-[#B91C1C]/20"
           >
             <Home className="w-4 h-4" />
             Kembali ke Beranda
           </Link>
           <Link
-            href="/contact"
+            href={`/${locale}/contact` as never}
             className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 hover:text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-200"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -69,10 +72,10 @@ export default function NotFound() {
           <p className="text-white/30 text-sm mb-4">Halaman Populer</p>
           <div className="flex flex-wrap justify-center gap-3">
             {[
-              { label: 'Tentang Kami', href: '/about' },
-              { label: 'Produk', href: '/products' },
-              { label: 'Bisnis', href: '/business' },
-              { label: 'Keberlanjutan', href: '/sustainability' },
+              { label: 'Tentang Kami', href: `/${locale}/about` as never },
+              { label: 'Produk', href: `/${locale}/products` as never },
+              { label: 'Bisnis', href: `/${locale}/business` as never },
+              { label: 'Keberlanjutan', href: `/${locale}/sustainability` as never },
             ].map((link) => (
               <Link
                 key={link.href}

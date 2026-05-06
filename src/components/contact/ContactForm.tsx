@@ -13,7 +13,7 @@ type ContactFormProps = {
     companyLabel: string;
     companyPlaceholder: string;
     subjectPlaceholder: string;
-    subjects: string[];
+    subjects: readonly string[];
     messageLabel: string;
     messagePlaceholder: string;
     loadingText: string;

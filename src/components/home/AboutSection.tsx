@@ -7,9 +7,9 @@ import { buttonVariants } from '@/components/ui/button';
 type AboutSectionProps = {
   content: {
     tag: string;
-    titleLines: string[];
+    titleLines: readonly string[];
     desc: string;
-    checklist: string[];
+    checklist: readonly string[];
     cta: string;
     imageAlt: string;
     floatingStat: string;

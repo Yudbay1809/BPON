@@ -8,7 +8,7 @@ type NewsSectionProps = {
     tag: string;
     title: string;
     more: string;
-    items: Array<{ title: string; category: string; date: string; excerpt: string }>;
+    items: ReadonlyArray<{ readonly title: string; readonly category: string; readonly date: string; readonly excerpt: string }>;
     readMore: string;
   };
 };

@@ -8,7 +8,15 @@
       "Bash(npx vercel)",
       "mcp__plugin_vercel_vercel__web_fetch_vercel_url",
       "Bash(ls e:/landing-page-bpon/.env*)",
-      "Bash(npx vercel deploy --prod)"
+      "Bash(npx vercel deploy --prod)",
+      "Bash(vercel deploy --prod)",
+      "Bash(npm install -g vercel)",
+      "mcp__plugin_vercel_vercel__get_deployment_build_logs",
+      "Bash(vercel logs landing-page-bpon-q6lt8cfpj-yudbay1809s-projects.vercel.app --level error)",
+      "Bash(npm run build)",
+      "Bash(npx prisma generate)",
+      "Bash(npm install --save-dev prisma@latest)",
+      "Bash(npm install @prisma/adapter-pg pg)"
     ]
   }
 }

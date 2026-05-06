@@ -6,7 +6,7 @@ import { ArrowRight } from 'lucide-react';
 
 type HeroSectionProps = {
   t: (key: string) => string;
-  stats: Array<{ label: string; value: string }>;
+  stats: ReadonlyArray<{ readonly label: string; readonly value: string }>;
 };
 
 export function HeroSection({ t, stats }: HeroSectionProps) {

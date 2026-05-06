@@ -8,7 +8,7 @@ type ProductsSectionProps = {
     tag: string;
     title: string;
     more: string;
-    items: Array<{ name: string; desc: string }>;
+    items: ReadonlyArray<{ readonly name: string; readonly desc: string }>;
   };
 };
 

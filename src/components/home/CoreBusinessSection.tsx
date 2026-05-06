@@ -4,8 +4,8 @@ import { Link } from '@/i18n/routing';
 type CoreBusinessSectionProps = {
   content: {
     tag: string;
-    titleLines: string[];
-    items: Array<{ title: string; subtitle: string; desc: string }>;
+    titleLines: readonly string[];
+    items: ReadonlyArray<{ readonly title: string; readonly subtitle: string; readonly desc: string }>;
     more: string;
   };
 };
