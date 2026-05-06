@@ -4,7 +4,14 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { CheckCircle, Clock, Mail, MapPin, Phone, Send } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { getLocalizedPageContent } from '@/content/page-content';
+
+export async function generateMetadata(props: { params: Promise<{ locale: string }> }) {
+  const params = await props.params;
+  const t = await getTranslations({ locale: params.locale, namespace: 'Contact' });
+  return { title: t('title') };
+}
 
 export default function ContactPage() {
   const locale = useLocale();
@@ -13,17 +20,45 @@ export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', company: '', subject: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [event.target.name]: event.target.value });
+    if (error) setError(null);
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setSubmitted(true);
-    setLoading(false);
+    setError(null);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          company: form.company,
+          message: form.message,
+          // subject is not in the schema, but we can include it or just name/email/message
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error?.[0]?.message || data.error || 'Failed to send message');
+      }
+
+      setSubmitted(true);
+    } catch (err: any) {
+      console.error('Submission error:', err);
+      setError(err.message || 'Something went wrong. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -174,6 +209,15 @@ export default function ContactPage() {
                         className="w-full px-4 py-3 bg-white border border-border rounded-xl text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none"
                       />
                     </div>
+
+                    {error && (
+                      <div className="p-4 bg-red-50 border border-red-100 rounded-xl flex items-start gap-3">
+                        <div className="w-5 h-5 bg-red-500 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                          <span className="text-white text-xs font-bold">!</span>
+                        </div>
+                        <p className="text-sm text-red-600 font-medium leading-tight">{error}</p>
+                      </div>
+                    )}
 
                     <button
                       type="submit"

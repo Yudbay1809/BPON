@@ -26,8 +26,25 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
   const content = await getSiteShellContent(params.locale);
 
   return {
-    title: content.metadata.title,
+    title: {
+      template: `%s | PT Berlian Palm Oil Nusantara`,
+      default: content.metadata.title,
+    },
     description: content.metadata.description,
+    viewport: 'width=device-width, initial-scale=1',
+    openGraph: {
+      title: content.metadata.title,
+      description: content.metadata.description,
+      url: 'https://bpon.co.id', // Replace with real domain
+      siteName: 'PT Berlian Palm Oil Nusantara',
+      locale: params.locale,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: content.metadata.title,
+      description: content.metadata.description,
+    },
   };
 }
 
