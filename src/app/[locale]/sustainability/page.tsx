@@ -5,6 +5,10 @@ import { getLocalizedPageContent } from '@/content/page-content';
 import { Link } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
+import { PageHero } from '@/components/ui/PageHero';
+import { AnimatedSection } from '@/components/ui/AnimatedSection';
+import { staggerContainer, staggerItem, fadeUp } from '@/hooks/use-scroll-animation';
+import { motion } from 'framer-motion';
 
 export default async function SustainabilityPage(props: { params: Promise<{ locale: string }> }) {
   const params = await props.params;
@@ -14,45 +18,46 @@ export default async function SustainabilityPage(props: { params: Promise<{ loca
 
   return (
     <div className="w-full pt-20">
-      <section className="relative h-72 md:h-96 flex items-center overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/hero-sustainability.jpg"
-            alt={copy.heroAlt}
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-[#0a2e0e]/85" />
-        </div>
-        <div className="relative z-10 container mx-auto px-4 md:px-8 max-w-7xl">
-          <p className="text-accent text-sm font-bold tracking-widest uppercase mb-3">{t('tag')}</p>
-          <h1 className="text-4xl md:text-6xl font-bold text-white">{t('title')}</h1>
-        </div>
-      </section>
+      <PageHero
+        imageSrc="/images/hero-sustainability.jpg"
+        imageAlt={copy.heroAlt}
+        overlayColor="bg-[#0a2e0e]/85"
+        tag={t('tag')}
+        title={t('title')}
+      />
 
+      {/* Commitment Quote */}
       <section className="py-20 bg-[#0F2914] text-white">
-        <div className="container mx-auto px-4 md:px-8 max-w-4xl text-center">
+        <AnimatedSection variants={fadeUp} className="container mx-auto px-4 md:px-8 max-w-4xl text-center">
           <p className="text-accent font-bold tracking-widest uppercase text-sm mb-4">{copy.commitment.tag}</p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
-            {copy.commitment.quote}
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">{copy.commitment.quote}</h2>
           <p className="text-white/70 text-lg leading-relaxed">{copy.commitment.desc}</p>
-        </div>
+        </AnimatedSection>
       </section>
 
+      {/* Pillars with animated progress bars */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-          <div className="text-center mb-16">
+          <AnimatedSection variants={fadeUp} className="text-center mb-16">
             <p className="text-accent font-bold tracking-widest uppercase text-sm mb-3">{copy.pillars.tag}</p>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground">{copy.pillars.title}</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          </AnimatedSection>
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={staggerContainer}
+          >
             {copy.pillars.items.map((pillar, index) => {
               const Icon = pillarIcons[index];
-
               return (
-                <div key={pillar.title} className="border border-border/40 rounded-2xl p-7 hover:border-primary/30 hover:shadow-lg transition-all">
+                <motion.div
+                  key={pillar.title}
+                  variants={staggerItem}
+                  className="border border-border/40 rounded-2xl p-7 hover:border-primary/30 hover:shadow-lg transition-all"
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                >
                   <div className="flex items-center justify-between mb-5">
                     <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                       <Icon className="w-6 h-6 text-primary" />
@@ -61,49 +66,80 @@ export default async function SustainabilityPage(props: { params: Promise<{ loca
                   </div>
                   <h3 className="text-xl font-bold text-foreground mb-3">{pillar.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-5">{pillar.desc}</p>
+                  {/* Animated progress bar */}
                   <div>
                     <div className="flex justify-between text-xs mb-1.5">
                       <span className="text-muted-foreground">{copy.pillars.progressLabel}</span>
                       <span className="font-bold text-primary">{pillar.progress}%</span>
                     </div>
                     <div className="h-2 bg-border rounded-full overflow-hidden">
-                      <div className="h-full bg-primary rounded-full transition-all duration-500" style={{ width: `${pillar.progress}%` }} />
+                      <motion.div
+                        className="h-full bg-primary rounded-full"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${pillar.progress}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.2, delay: 0.1 + index * 0.08, ease: 'easeOut' }}
+                      />
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 
+      {/* SDGs */}
       <section className="py-24 bg-[#F5F5F5]">
         <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-          <div className="text-center mb-12">
+          <AnimatedSection variants={fadeUp} className="text-center mb-12">
             <p className="text-accent font-bold tracking-widest uppercase text-sm mb-3">{copy.sdgs.tag}</p>
             <h2 className="text-4xl font-bold text-foreground mb-4">{copy.sdgs.title}</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">{copy.sdgs.desc}</p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-4">
+          </AnimatedSection>
+          <motion.div
+            className="flex flex-wrap justify-center gap-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
             {copy.sdgs.items.map((sdg) => (
-              <div key={sdg.no} className="bg-primary text-white rounded-xl px-5 py-4 text-center min-w-[120px]">
+              <motion.div
+                key={sdg.no}
+                variants={staggerItem}
+                className="bg-primary text-white rounded-xl px-5 py-4 text-center min-w-[120px]"
+                whileHover={{ scale: 1.06, transition: { duration: 0.2 } }}
+              >
                 <p className="text-2xl font-bold text-accent">SDG {sdg.no}</p>
                 <p className="text-xs text-white/80 mt-1">{sdg.label}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
+      {/* Reports */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-          <div className="text-center mb-12">
+          <AnimatedSection variants={fadeUp} className="text-center mb-12">
             <p className="text-accent font-bold tracking-widest uppercase text-sm mb-3">{copy.reports.tag}</p>
             <h2 className="text-4xl font-bold text-foreground">{copy.reports.title}</h2>
-          </div>
-          <div className="max-w-2xl mx-auto space-y-4">
+          </AnimatedSection>
+          <motion.div
+            className="max-w-2xl mx-auto space-y-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={staggerContainer}
+          >
             {copy.reports.items.map((report) => (
-              <div key={report.year} className="flex items-center justify-between p-5 border border-border/40 rounded-xl hover:border-primary/30 hover:bg-primary/3 transition-all group">
+              <motion.div
+                key={report.year}
+                variants={staggerItem}
+                className="flex items-center justify-between p-5 border border-border/40 rounded-xl hover:border-primary/30 hover:bg-primary/3 transition-all group"
+                whileHover={{ x: 4, transition: { duration: 0.15 } }}
+              >
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                     <span className="text-primary font-bold text-sm">{report.year}</span>
@@ -116,20 +152,21 @@ export default async function SustainabilityPage(props: { params: Promise<{ loca
                 <button className="text-primary font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
                   {copy.reports.button} <ArrowRight className="w-4 h-4" />
                 </button>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
+      {/* CTA */}
       <section className="py-20 bg-primary">
-        <div className="container mx-auto px-4 text-center max-w-3xl">
+        <AnimatedSection variants={fadeUp} className="container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">{copy.cta.title}</h2>
           <p className="text-white/70 mb-8 text-lg">{copy.cta.desc}</p>
           <Link href="/contact" className={cn(buttonVariants({ size: 'lg' }), 'bg-accent hover:bg-accent/90 text-white font-bold px-10 h-12')}>
             {copy.cta.button} <ArrowRight className="ml-2 w-4 h-4" />
           </Link>
-        </div>
+        </AnimatedSection>
       </section>
     </div>
   );
