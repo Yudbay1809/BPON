@@ -27,7 +27,7 @@ const heroItemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] as any },
   },
 };
 
@@ -36,7 +36,7 @@ const statVariants = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, delay: 0.8 + i * 0.1, ease: 'easeOut' },
+    transition: { duration: 0.5, delay: 0.8 + i * 0.1, ease: 'easeOut' as any },
   }),
 };
 
@@ -48,7 +48,7 @@ export function HeroSection({ t, stats }: HeroSectionProps) {
         className="absolute inset-0 z-0"
         initial={{ scale: 1.08 }}
         animate={{ scale: 1 }}
-        transition={{ duration: 2.5, ease: 'easeOut' }}
+        transition={{ duration: 2.5, ease: 'easeOut' as any }}
       >
         <Image
           src="/images/hero-plantation.jpg"

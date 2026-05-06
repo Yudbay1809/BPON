@@ -9,11 +9,11 @@ import { fadeUp, staggerContainer, staggerItem } from '@/hooks/use-scroll-animat
 
 type NewsSectionProps = {
   content: {
-    tag: string;
-    title: string;
-    more: string;
-    items: Array<{ title: string; category: string; date: string; excerpt: string }>;
-    readMore: string;
+    readonly tag: string;
+    readonly title: string;
+    readonly more: string;
+    readonly items: ReadonlyArray<{ readonly title: string; readonly category: string; readonly date: string; readonly excerpt: string }>;
+    readonly readMore: string;
   };
 };
 
@@ -50,7 +50,7 @@ export function NewsSection({ content }: NewsSectionProps) {
               key={item.title}
               variants={staggerItem}
               className="bg-white rounded-2xl overflow-hidden group hover:shadow-xl transition-shadow duration-300"
-              whileHover={{ y: -8, transition: { duration: 0.25, ease: 'easeOut' } }}
+              whileHover={{ y: -8, transition: { duration: 0.25, ease: 'easeOut' as any } }}
             >
               <div className="p-8">
                 <div className="flex items-center gap-3 mb-4">

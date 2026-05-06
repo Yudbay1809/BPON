@@ -18,12 +18,12 @@ export function CTASection({ t }: CTASectionProps) {
       <motion.div
         className="absolute -top-32 -right-32 w-96 h-96 bg-white/5 rounded-full"
         animate={{ scale: [1, 1.15, 1], rotate: [0, 20, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' as any }}
       />
       <motion.div
         className="absolute -bottom-24 -left-24 w-72 h-72 bg-accent/10 rounded-full"
         animate={{ scale: [1, 1.2, 1], rotate: [0, -15, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' as any, delay: 1 }}
       />
 
       <div className="relative z-10 container mx-auto px-6 md:px-8 max-w-7xl text-center">

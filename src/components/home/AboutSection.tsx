@@ -10,13 +10,13 @@ import { fadeLeft, fadeRight, staggerContainer, staggerItem } from '@/hooks/use-
 
 type AboutSectionProps = {
   content: {
-    tag: string;
-    titleLines: string[];
-    desc: string;
-    checklist: string[];
-    cta: string;
-    imageAlt: string;
-    floatingStat: string;
+    readonly tag: string;
+    readonly titleLines: readonly string[];
+    readonly desc: string;
+    readonly checklist: readonly string[];
+    readonly cta: string;
+    readonly imageAlt: string;
+    readonly floatingStat: string;
   };
 };
 
@@ -32,7 +32,7 @@ export function AboutSection({ content }: AboutSectionProps) {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={fadeLeft}
-            transition={{ duration: 0.75, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.75, ease: [0.25, 0.46, 0.45, 0.94] as any }}
           >
             <div className="relative h-[400px] md:h-[560px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
@@ -47,7 +47,7 @@ export function AboutSection({ content }: AboutSectionProps) {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4, ease: 'backOut' }}
+              transition={{ duration: 0.5, delay: 0.4, ease: 'backOut' as any }}
             >
               <p className="text-3xl md:text-5xl font-bold">35+</p>
               <p className="text-white/80 text-[10px] md:text-sm mt-1">{content.floatingStat}</p>
@@ -61,7 +61,7 @@ export function AboutSection({ content }: AboutSectionProps) {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={fadeRight}
-            transition={{ duration: 0.75, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.75, ease: [0.25, 0.46, 0.45, 0.94] as any }}
           >
             <p className="text-accent font-bold tracking-widest uppercase text-sm">{content.tag}</p>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">

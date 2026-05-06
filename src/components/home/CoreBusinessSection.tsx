@@ -26,7 +26,7 @@ export function CoreBusinessSection({ content }: CoreBusinessSectionProps) {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeUp}
-          transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] as any }}
         >
           <p className="text-accent font-bold tracking-widest uppercase text-xs sm:text-sm mb-3">{content.tag}</p>
           <h2 className="text-3xl md:text-5xl font-bold text-foreground leading-tight">

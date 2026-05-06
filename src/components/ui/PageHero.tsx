@@ -18,7 +18,7 @@ export function PageHero({ imageSrc, imageAlt, overlayColor = 'bg-[#0d2e10]/80',
         className="absolute inset-0"
         initial={{ scale: 1.08 }}
         animate={{ scale: 1 }}
-        transition={{ duration: 1.5, ease: 'easeOut' }}
+        transition={{ duration: 1.5, ease: 'easeOut' as any }}
       >
         <Image src={imageSrc} alt={imageAlt} fill className="object-cover" priority />
         <div className={`absolute inset-0 ${overlayColor}`} />

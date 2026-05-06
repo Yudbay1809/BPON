@@ -10,11 +10,11 @@ import { fadeUp, scaleIn, staggerContainer, staggerItem } from '@/hooks/use-scro
 
 type SustainabilitySectionProps = {
   content: {
-    tag: string;
-    title: string;
-    desc: string;
-    items: Array<{ title: string; desc: string }>;
-    cta: string;
+    readonly tag: string;
+    readonly title: string;
+    readonly desc: string;
+    readonly items: ReadonlyArray<{ readonly title: string; readonly desc: string }>;
+    readonly cta: string;
   };
 };
 
@@ -29,7 +29,7 @@ export function SustainabilitySection({ content }: SustainabilitySectionProps) {
         initial={{ scale: 1.05 }}
         whileInView={{ scale: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 1.2, ease: 'easeOut' }}
+        transition={{ duration: 1.2, ease: 'easeOut' as any }}
       >
         <Image
           src="/images/hero-sustainability.jpg"

@@ -17,7 +17,7 @@ export function AnimatedSection({ children, className, delay = 0, variants = fad
       whileInView="visible"
       viewport={{ once: true, amount: 0.12 }}
       variants={variants}
-      transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94], delay }}
+      transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] as any, delay }}
       className={className}
     >
       {children}
