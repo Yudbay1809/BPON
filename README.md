@@ -74,6 +74,37 @@ This project is optimized for Vercel:
 - `/public/images`: Localized high-quality assets.
 - `src/proxy.ts`: Next.js 16 routing proxy.
 
+## Database Setup (Prisma)
+
+1. Copy `.env.example` to `.env` and configure your `DATABASE_URL`.
+2. Run database migrations to create tables:
+   ```bash
+   npx prisma migrate dev
+   ```
+3. Generate the Prisma Client:
+   ```bash
+   npx prisma generate
+   ```
+
+## API Routes
+
+The backend API routes are located in `src/app/api/` and interact with the Prisma database.
+
+- `POST /api/contact`: Submits a new contact form message. Requires `name`, `email`, `message` in JSON body.
+- `GET /api/products`: Retrieves a list of all products.
+- `GET /api/articles`: Retrieves a list of articles. Accepts `?published=false` to include drafts.
+
+## Design System
+
+We use a custom Design System integrated with Tailwind CSS.
+- **Colors**: Use our semantic tokens like `bg-primary` (Corporate Red), `text-accent` (Gold/Yellow), and `bg-foreground` (Dark text).
+- **Typography**: Adhere to the font scale defined in Tailwind configuration. Avoid hardcoding `text-[#123456]` values.
+- Please refer to `design-system/` for complete tokens.
+
+## Contributing
+
+Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+
 ## License
 
 © 2026 PT Berlian Palm Oil Nusantara. All Rights Reserved.
