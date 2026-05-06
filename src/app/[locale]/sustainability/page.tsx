@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { ArrowRight, Award, Droplets, Globe, TreePine, Users, Zap } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { getLocalizedPageContent } from '@/content/page-content';
