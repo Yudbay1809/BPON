@@ -84,9 +84,19 @@ export default async function HomePage(props: { params: Promise<{ locale: string
         <div className="absolute bottom-0 left-0 right-0 z-20">
           <div className="bg-primary/95 backdrop-blur-sm">
             <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-              <div className="grid grid-cols-2 md:grid-cols-4">
+              <div className="grid grid-cols-2 md:grid-cols-4 border-white/30">
                 {copy.stats.map((stat, index) => (
-                  <div key={index} className="py-4 px-2 sm:py-5 sm:px-6 text-center border-r border-white/20 last:border-0">
+                  <div
+                    key={index}
+                    className={cn(
+                      "py-4 px-2 sm:py-5 sm:px-6 text-center border-white/30",
+                      // Mobile: Border right for odd items, border bottom for first two
+                      index % 2 === 0 ? "border-r" : "",
+                      index < 2 ? "border-b" : "",
+                      // Desktop: Reset horizontal borders, add vertical borders for all except last
+                      "md:border-b-0 md:border-r md:last:border-r-0"
+                    )}
+                  >
                     <p className="text-2xl sm:text-3xl font-bold text-accent">{stat.value}</p>
                     <p className="text-white/70 text-[10px] sm:text-sm mt-1">{stat.label}</p>
                   </div>
