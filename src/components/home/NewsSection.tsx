@@ -1,14 +1,18 @@
+'use client';
+
+import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
+import { fadeUp, staggerContainer, staggerItem } from '@/hooks/use-scroll-animation';
 
 type NewsSectionProps = {
   content: {
     tag: string;
     title: string;
     more: string;
-    items: ReadonlyArray<{ readonly title: string; readonly category: string; readonly date: string; readonly excerpt: string }>;
+    items: Array<{ title: string; category: string; date: string; excerpt: string }>;
     readMore: string;
   };
 };
@@ -17,7 +21,14 @@ export function NewsSection({ content }: NewsSectionProps) {
   return (
     <section className="py-28 bg-[#F5F5F5]">
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <motion.div
+          className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeUp}
+          transition={{ duration: 0.65 }}
+        >
           <div>
             <p className="text-accent font-bold tracking-widest uppercase text-sm mb-3">{content.tag}</p>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground">{content.title}</h2>
@@ -25,10 +36,22 @@ export function NewsSection({ content }: NewsSectionProps) {
           <Link href="/news" className={cn(buttonVariants({ variant: 'outline' }), 'border-primary text-primary hover:bg-primary hover:text-white')}>
             {content.more}
           </Link>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        </motion.div>
+
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={staggerContainer}
+        >
           {content.items.map((item) => (
-            <div key={item.title} className="bg-white rounded-2xl overflow-hidden group hover:shadow-xl transition-shadow duration-300">
+            <motion.div
+              key={item.title}
+              variants={staggerItem}
+              className="bg-white rounded-2xl overflow-hidden group hover:shadow-xl transition-shadow duration-300"
+              whileHover={{ y: -8, transition: { duration: 0.25, ease: 'easeOut' } }}
+            >
               <div className="p-8">
                 <div className="flex items-center gap-3 mb-4">
                   <span className="text-xs font-bold bg-primary/10 text-primary px-3 py-1 rounded-full">{item.category}</span>
@@ -42,9 +65,9 @@ export function NewsSection({ content }: NewsSectionProps) {
                   </Link>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
