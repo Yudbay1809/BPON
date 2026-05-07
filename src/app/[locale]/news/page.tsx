@@ -5,6 +5,16 @@ import { getLocalizedPageContent } from '@/content/page-content';
 import { Link } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
+import { PageHero } from '@/components/ui/PageHero';
+import { AnimatedSection } from '@/components/ui/AnimatedSection';
+import { 
+  staggerContainer, 
+  staggerItem, 
+  fadeLeft, 
+  fadeRight, 
+  fadeUp, 
+  scaleIn 
+} from '@/hooks/use-scroll-animation';
 
 export default async function NewsPage(props: { params: Promise<{ locale: string }> }) {
   const params = await props.params;
@@ -13,87 +23,100 @@ export default async function NewsPage(props: { params: Promise<{ locale: string
 
   return (
     <div className="w-full pt-20">
-      <section className="relative h-72 md:h-80 flex items-center overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/hero-news.jpg"
-            alt={copy.heroAlt}
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-[#0d2e10]/80" />
-        </div>
-        <div className="relative z-10 container mx-auto px-4 md:px-8 max-w-7xl">
-          <p className="text-accent text-sm font-bold tracking-widest uppercase mb-3">{t('tag')}</p>
-          <h1 className="text-4xl md:text-6xl font-bold text-white">{t('title')}</h1>
-        </div>
-      </section>
+      <PageHero
+        imageSrc="/images/hero-news.jpg"
+        imageAlt={copy.heroAlt}
+        tag={t('tag')}
+        title={t('title')}
+      />
 
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white overflow-hidden">
         <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-          <p className="text-accent font-bold tracking-widest uppercase text-sm mb-6">{copy.featuredTag}</p>
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
-            <div className="lg:col-span-3 relative h-[380px] rounded-2xl overflow-hidden shadow-xl">
+          <AnimatedSection variants={fadeUp}>
+            <p className="text-accent font-bold tracking-widest uppercase text-sm mb-6">{copy.featuredTag}</p>
+          </AnimatedSection>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
+            <AnimatedSection 
+              variants={fadeLeft}
+              className="lg:col-span-3 relative h-[420px] rounded-3xl overflow-hidden shadow-2xl"
+            >
               <Image src={copy.featured.imgSrc} alt={copy.featured.title} fill className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="absolute top-4 left-4">
-                <span className={cn('text-xs font-bold px-3 py-1.5 rounded-full', copy.categoryColors[copy.featured.category as keyof typeof copy.categoryColors] ?? 'bg-gray-100 text-gray-700')}>
+              <div className="absolute top-6 left-6">
+                <AnimatedSection 
+                  variants={scaleIn}
+                  className={cn('text-xs font-bold px-4 py-2 rounded-full shadow-lg', copy.categoryColors[copy.featured.category as keyof typeof copy.categoryColors] ?? 'bg-gray-100 text-gray-700')}
+                >
                   {copy.featured.category}
-                </span>
+                </AnimatedSection>
               </div>
-            </div>
-            <div className="lg:col-span-2 space-y-4">
+            </AnimatedSection>
+            
+            <AnimatedSection 
+              variants={fadeRight}
+              className="lg:col-span-2 space-y-6"
+            >
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <Calendar className="w-4 h-4" />
+                <Calendar className="w-4 h-4 text-primary" />
                 {copy.featured.date}
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground leading-snug">{copy.featured.title}</h2>
-              <p className="text-muted-foreground leading-relaxed">{copy.featured.excerpt}</p>
-              <Link href="/news" className={cn(buttonVariants(), 'bg-primary hover:bg-primary/90 text-white group mt-2')}>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">{copy.featured.title}</h2>
+              <p className="text-muted-foreground text-lg leading-relaxed">{copy.featured.excerpt}</p>
+              <Link href="/news" className={cn(buttonVariants({ size: 'lg' }), 'bg-primary hover:bg-primary/90 text-white group mt-4 px-8')}>
                 {t('read_more')}
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-            </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-[#F5F5F5]">
+      <section className="py-24 bg-[#F5F5F5] overflow-hidden">
         <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-          <p className="text-accent font-bold tracking-widest uppercase text-sm mb-8">{copy.allNewsTag}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {copy.articles.map((article) => (
-              <div key={article.title} className="bg-white rounded-2xl overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-                <div className="relative h-48 overflow-hidden">
+          <AnimatedSection variants={fadeUp}>
+            <p className="text-accent font-bold tracking-widest uppercase text-sm mb-8">{copy.allNewsTag}</p>
+          </AnimatedSection>
+          
+          <AnimatedSection 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={staggerContainer}
+          >
+            {copy.articles.map((article, index) => (
+              <AnimatedSection 
+                key={article.title} 
+                variants={staggerItem}
+                className="bg-white rounded-3xl overflow-hidden group hover:shadow-2xl transition-all duration-500 border border-border/40 hover:border-primary/20"
+              >
+                <div className="relative h-56 overflow-hidden">
                   <Image
                     src={article.imgSrc}
                     alt={article.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute top-3 left-3">
-                    <span className={cn('text-xs font-bold px-3 py-1.5 rounded-full', copy.categoryColors[article.category as keyof typeof copy.categoryColors] ?? 'bg-gray-100 text-gray-700')}>
+                  <div className="absolute top-4 left-4">
+                    <span className={cn('text-xs font-bold px-4 py-1.5 rounded-full shadow-md backdrop-blur-sm', copy.categoryColors[article.category as keyof typeof copy.categoryColors] ?? 'bg-gray-100 text-gray-700')}>
                       {article.category}
                     </span>
                   </div>
                 </div>
-                <div className="p-6 space-y-3">
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <Calendar className="w-3.5 h-3.5" />
+                <div className="p-8 space-y-4">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground font-medium">
+                    <Calendar className="w-4 h-4 text-primary/60" />
                     {article.date}
                   </div>
-                  <h3 className="font-bold text-foreground text-lg leading-snug group-hover:text-primary transition-colors">
+                  <h3 className="font-bold text-foreground text-xl leading-snug group-hover:text-primary transition-colors duration-300">
                     {article.title}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">{article.excerpt}</p>
-                  <Link href="/news" className="inline-flex items-center gap-2 text-primary font-semibold text-sm pt-2 group-hover:gap-3 transition-all">
+                  <Link href="/news" className="inline-flex items-center gap-2 text-primary font-bold text-sm pt-4 group-hover:gap-4 transition-all">
                     {t('read_more')} <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
-              </div>
+              </AnimatedSection>
             ))}
-          </div>
+          </AnimatedSection>
         </div>
       </section>
     </div>
