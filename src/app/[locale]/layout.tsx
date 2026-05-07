@@ -36,7 +36,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
     openGraph: {
       title: content.metadata.title,
       description: content.metadata.description,
-      url: 'https://bpon-crv7wf2r4-yudbay1809s-projects.vercel.app',
+      url: 'https://landing-page-bpon.vercel.app',
       siteName: 'PT Berlian Palm Oil Nusantara',
       locale: params.locale,
       type: 'website',
