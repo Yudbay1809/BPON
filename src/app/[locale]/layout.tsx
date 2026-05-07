@@ -6,6 +6,7 @@ import { Lexend, Source_Sans_3 } from 'next/font/google';
 import { Footer } from '@/components/layout/Footer';
 import { Navbar } from '@/components/layout/Navbar';
 import { routing } from '@/i18n/routing';
+import { Analytics } from '@vercel/analytics/react';
 import { getSiteShellContent } from '@/lib/site-content';
 import '../globals.css';
 
@@ -35,7 +36,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
     openGraph: {
       title: content.metadata.title,
       description: content.metadata.description,
-      url: 'https://bpon.co.id', // Replace with real domain
+      url: 'https://bpon-crv7wf2r4-yudbay1809s-projects.vercel.app',
       siteName: 'PT Berlian Palm Oil Nusantara',
       locale: params.locale,
       type: 'website',
@@ -74,6 +75,7 @@ export default async function LocaleLayout(props: {
             {children}
           </main>
           <Footer content={shellContent.footer} />
+          <Analytics />
         </NextIntlClientProvider>
       </body>
     </html>

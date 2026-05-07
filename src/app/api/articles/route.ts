@@ -1,22 +1,44 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { z } from 'zod';
 
-export async function GET(request: Request) {
+const articleSchema = z.object({
+  slug: z.string().min(2),
+  title: z.string().min(2),
+  content: z.string().min(10),
+  imageUrl: z.string().url().optional(),
+  published: z.boolean().optional().default(false),
+});
+
+export async function GET() {
   try {
-    const { searchParams } = new URL(request.url);
-    const publishedOnly = searchParams.get('published') !== 'false';
-
     const articles = await prisma.article.findMany({
-      where: publishedOnly ? { published: true } : undefined,
       orderBy: { createdAt: 'desc' },
     });
-
-    return NextResponse.json({ data: articles });
+    return NextResponse.json({ success: true, data: articles });
   } catch (error) {
-    console.error('Failed to fetch articles:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    console.error('Articles GET Error:', error);
+    return NextResponse.json({ success: false, error: 'Failed to fetch articles' }, { status: 500 });
+  }
+}
+
+export async function POST(request: Request) {
+  try {
+    const body = await request.json();
+    const validatedData = articleSchema.parse(body);
+
+    const article = await prisma.article.create({
+      data: validatedData,
+    });
+
+    return NextResponse.json({ success: true, data: article }, { status: 201 });
+  } catch (error) {
+    console.error('Articles POST Error:', error);
+
+    if (error instanceof z.ZodError) {
+      return NextResponse.json({ success: false, error: error.issues }, { status: 400 });
+    }
+
+    return NextResponse.json({ success: false, error: 'Internal Server Error' }, { status: 500 });
   }
 }
