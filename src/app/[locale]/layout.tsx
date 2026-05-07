@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Lexend, Source_Sans_3 } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import { Footer } from '@/components/layout/Footer';
 import { Navbar } from '@/components/layout/Navbar';
 import { routing } from '@/i18n/routing';
@@ -75,6 +76,7 @@ export default async function LocaleLayout(props: {
           </main>
           <Footer content={shellContent.footer} />
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );
