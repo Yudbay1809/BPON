@@ -1,0 +1,19 @@
+# Local tooling and workspace metadata
+.agent/
+.claude/
+.github/
+.vscode/
+
+# Design and prompt assets that are not needed at runtime
+design-system/
+prompt/
+
+# Build artifacts and dependencies are regenerated in Vercel
+.next/
+node_modules/
+.vercel/
+
+# Optional docs that are not required for deployment
+README.md
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
