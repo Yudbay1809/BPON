@@ -7,11 +7,12 @@ import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
 import { fadeUp, staggerContainer, staggerItem } from '@/hooks/use-scroll-animation';
 
-type CTASectionProps = {
-  t: (key: string) => string;
-};
+import { useTranslations } from 'next-intl';
 
-export function CTASection({ t }: CTASectionProps) {
+type CTASectionProps = {};
+
+export function CTASection({}: CTASectionProps) {
+  const t = useTranslations('HomePage');
   return (
     <section className="py-20 md:py-28 bg-primary overflow-hidden relative">
       {/* Decorative animated background circles */}

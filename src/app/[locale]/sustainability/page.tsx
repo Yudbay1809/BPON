@@ -7,7 +7,6 @@ import { buttonVariants } from '@/components/ui/button';
 import { PageHero } from '@/components/ui/PageHero';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 import { staggerContainer, staggerItem, fadeUp } from '@/hooks/use-scroll-animation';
-import { motion } from 'framer-motion';
 
 export default async function SustainabilityPage(props: { params: Promise<{ locale: string }> }) {
   const params = await props.params;
@@ -41,21 +40,16 @@ export default async function SustainabilityPage(props: { params: Promise<{ loca
             <p className="text-accent font-bold tracking-widest uppercase text-sm mb-3">{copy.pillars.tag}</p>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground">{copy.pillars.title}</h2>
           </AnimatedSection>
-          <motion.div
+          <AnimatedSection
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
             variants={staggerContainer}
           >
             {copy.pillars.items.map((pillar, index) => {
               const Icon = pillarIcons[index];
               return (
-                <motion.div
+                <div
                   key={pillar.title}
-                  variants={staggerItem}
                   className="border border-border/40 rounded-2xl p-7 hover:border-primary/30 hover:shadow-lg transition-all"
-                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
                 >
                   <div className="flex items-center justify-between mb-5">
                     <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
@@ -72,19 +66,16 @@ export default async function SustainabilityPage(props: { params: Promise<{ loca
                       <span className="font-bold text-primary">{pillar.progress}%</span>
                     </div>
                     <div className="h-2 bg-border rounded-full overflow-hidden">
-                      <motion.div
+                      <div
                         className="h-full bg-primary rounded-full"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${pillar.progress}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.2, delay: 0.1 + index * 0.08, ease: 'easeOut' }}
+                        style={{ width: `${pillar.progress}%` }}
                       />
                     </div>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
-          </motion.div>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -96,25 +87,20 @@ export default async function SustainabilityPage(props: { params: Promise<{ loca
             <h2 className="text-4xl font-bold text-foreground mb-4">{copy.sdgs.title}</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">{copy.sdgs.desc}</p>
           </AnimatedSection>
-          <motion.div
+          <AnimatedSection
             className="flex flex-wrap justify-center gap-4"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
             variants={staggerContainer}
           >
             {copy.sdgs.items.map((sdg) => (
-              <motion.div
+              <div
                 key={sdg.no}
-                variants={staggerItem}
                 className="bg-primary text-white rounded-xl px-5 py-4 text-center min-w-[120px]"
-                whileHover={{ scale: 1.06, transition: { duration: 0.2 } }}
               >
                 <p className="text-2xl font-bold text-accent">SDG {sdg.no}</p>
                 <p className="text-xs text-white/80 mt-1">{sdg.label}</p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -125,19 +111,14 @@ export default async function SustainabilityPage(props: { params: Promise<{ loca
             <p className="text-accent font-bold tracking-widest uppercase text-sm mb-3">{copy.reports.tag}</p>
             <h2 className="text-4xl font-bold text-foreground">{copy.reports.title}</h2>
           </AnimatedSection>
-          <motion.div
+          <AnimatedSection
             className="max-w-2xl mx-auto space-y-4"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
             variants={staggerContainer}
           >
             {copy.reports.items.map((report) => (
-              <motion.div
+              <div
                 key={report.year}
-                variants={staggerItem}
                 className="flex items-center justify-between p-5 border border-border/40 rounded-xl hover:border-primary/30 hover:bg-primary/3 transition-all group"
-                whileHover={{ x: 4, transition: { duration: 0.15 } }}
               >
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
@@ -151,9 +132,9 @@ export default async function SustainabilityPage(props: { params: Promise<{ loca
                 <button className="text-primary font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
                   {copy.reports.button} <ArrowRight className="w-4 h-4" />
                 </button>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </AnimatedSection>
         </div>
       </section>
 

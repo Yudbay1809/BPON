@@ -6,9 +6,9 @@ import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 type HeroSectionProps = {
-  t: (key: string) => string;
   stats: ReadonlyArray<{ readonly label: string; readonly value: string }>;
 };
 
@@ -40,7 +40,8 @@ const statVariants = {
   }),
 };
 
-export function HeroSection({ t, stats }: HeroSectionProps) {
+export function HeroSection({ stats }: HeroSectionProps) {
+  const t = useTranslations('HomePage');
   return (
     <section className="relative h-screen min-h-[650px] sm:min-h-[700px] w-full flex items-center sm:items-end justify-start overflow-hidden">
       {/* Background image with subtle zoom animation */}

@@ -8,7 +8,6 @@ import { buttonVariants } from '@/components/ui/button';
 import { PageHero } from '@/components/ui/PageHero';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 import { staggerContainer, staggerItem, fadeLeft, fadeRight, fadeUp } from '@/hooks/use-scroll-animation';
-import { motion } from 'framer-motion';
 
 export default async function ProductsPage(props: { params: Promise<{ locale: string }> }) {
   const params = await props.params;
@@ -29,23 +28,19 @@ export default async function ProductsPage(props: { params: Promise<{ locale: st
       <section className="py-16 bg-primary">
         <AnimatedSection variants={fadeUp} className="container mx-auto px-4 md:px-8 max-w-7xl text-center">
           <p className="text-white/80 text-lg max-w-3xl mx-auto">{copy.intro}</p>
-          <motion.div
+          <AnimatedSection
             className="flex flex-wrap justify-center gap-3 mt-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
             variants={staggerContainer}
           >
             {copy.certifications.map((certification) => (
-              <motion.span
+              <span
                 key={certification}
-                variants={staggerItem}
                 className="bg-white/10 border border-white/30 text-white text-sm font-semibold px-4 py-2 rounded-full"
               >
                 {certification}
-              </motion.span>
+              </span>
             ))}
-          </motion.div>
+          </AnimatedSection>
         </AnimatedSection>
       </section>
 
@@ -97,23 +92,19 @@ export default async function ProductsPage(props: { params: Promise<{ locale: st
 
                     <div>
                       <h4 className="font-bold text-foreground mb-3">{copy.catalog.applicationTitle}</h4>
-                      <motion.div
+                      <AnimatedSection
                         className="flex flex-wrap gap-2"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
                         variants={staggerContainer}
                       >
                         {product.applications.map((application) => (
-                          <motion.span
+                          <span
                             key={application}
-                            variants={staggerItem}
                             className="text-xs bg-primary/8 text-primary px-3 py-1.5 rounded-full border border-primary/20 font-semibold"
                           >
                             {application}
-                          </motion.span>
+                          </span>
                         ))}
-                      </motion.div>
+                      </AnimatedSection>
                     </div>
                   </AnimatedSection>
                 </div>

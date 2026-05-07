@@ -15,13 +15,13 @@ export default async function HomePage(props: { params: Promise<{ locale: string
 
   return (
     <div className="w-full overflow-x-hidden">
-      <HeroSection t={t} stats={copy.stats} />
+      <HeroSection stats={copy.stats} />
       <CoreBusinessSection content={copy.coreBusiness} />
       <AboutSection content={copy.about} />
       <ProductsSection content={copy.products} />
       <SustainabilitySection content={copy.sustainability} />
       <NewsSection content={copy.news} />
-      <CTASection t={t} />
+      <CTASection />
     </div>
   );
 }

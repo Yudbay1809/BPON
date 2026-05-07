@@ -8,7 +8,6 @@ import { buttonVariants } from '@/components/ui/button';
 import { PageHero } from '@/components/ui/PageHero';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 import { staggerContainer, staggerItem, fadeLeft, fadeRight, fadeUp } from '@/hooks/use-scroll-animation';
-import { motion } from 'framer-motion';
 
 export default async function AboutPage(props: { params: Promise<{ locale: string }> }) {
   const params = await props.params;
@@ -27,19 +26,16 @@ export default async function AboutPage(props: { params: Promise<{ locale: strin
       {/* Vision & Mission */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-          <motion.div
+          <AnimatedSection
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
             variants={staggerContainer}
           >
-            <motion.div variants={staggerItem} className="bg-primary rounded-2xl p-8 text-white">
+            <div className="bg-primary rounded-2xl p-8 text-white">
               <Eye className="w-10 h-10 text-accent mb-5" />
               <h2 className="text-2xl font-bold mb-4">{copy.visionTitle}</h2>
               <p className="text-white/80 leading-relaxed">{copy.visionDesc}</p>
-            </motion.div>
-            <motion.div variants={staggerItem} className="bg-[#F5F5F5] rounded-2xl p-8 md:col-span-2">
+            </div>
+            <div className="bg-[#F5F5F5] rounded-2xl p-8 md:col-span-2">
               <Target className="w-10 h-10 text-primary mb-5" />
               <h2 className="text-2xl font-bold text-foreground mb-4">{copy.missionTitle}</h2>
               <ul className="space-y-3">
@@ -50,8 +46,8 @@ export default async function AboutPage(props: { params: Promise<{ locale: strin
                   </li>
                 ))}
               </ul>
-            </motion.div>
-          </motion.div>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -73,20 +69,17 @@ export default async function AboutPage(props: { params: Promise<{ locale: strin
                   {paragraph}
                 </p>
               ))}
-              <motion.div
+              <AnimatedSection
                 className="grid grid-cols-2 gap-6 pt-4"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
                 variants={staggerContainer}
               >
                 {copy.profile.stats.map((stat) => (
-                  <motion.div key={stat.label} variants={staggerItem} className="bg-white rounded-xl p-5 border border-border/40">
+                  <div key={stat.label} className="bg-white rounded-xl p-5 border border-border/40">
                     <p className="text-3xl font-bold text-primary">{stat.value}</p>
                     <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
-                  </motion.div>
+                  </div>
                 ))}
-              </motion.div>
+              </AnimatedSection>
             </AnimatedSection>
 
             <AnimatedSection variants={fadeRight} className="relative h-[540px] rounded-2xl overflow-hidden shadow-2xl">
@@ -112,13 +105,11 @@ export default async function AboutPage(props: { params: Promise<{ locale: strin
             <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-border hidden md:block" />
             <div className="space-y-12">
               {copy.timeline.items.map((milestone, index) => (
-                <motion.div
+                <AnimatedSection
                   key={milestone.year}
                   className={`flex flex-col md:flex-row items-center gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-                  initial={{ opacity: 0, y: 32 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{ duration: 0.55, delay: index * 0.07 }}
+                  variants={fadeUp}
+                  delay={index * 0.07}
                 >
                   <div className="flex-1 md:text-right">
                     {index % 2 === 0 ? (
@@ -130,13 +121,7 @@ export default async function AboutPage(props: { params: Promise<{ locale: strin
                       <div />
                     )}
                   </div>
-                  <motion.div
-                    className="w-5 h-5 bg-primary rounded-full border-4 border-white shadow-md shrink-0 hidden md:block"
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.07 + 0.2, type: 'spring', stiffness: 400 }}
-                  />
+                  <div className="w-5 h-5 bg-primary rounded-full border-4 border-white shadow-md shrink-0 hidden md:block" />
                   <div className="flex-1">
                     {index % 2 !== 0 ? (
                       <div className="bg-[#F5F5F5] rounded-2xl p-6 md:max-w-sm">
@@ -151,7 +136,7 @@ export default async function AboutPage(props: { params: Promise<{ locale: strin
                       <p className="text-muted-foreground">{milestone.event}</p>
                     </div>
                   </div>
-                </motion.div>
+                </AnimatedSection>
               ))}
             </div>
           </div>
@@ -165,19 +150,14 @@ export default async function AboutPage(props: { params: Promise<{ locale: strin
             <p className="text-accent font-bold tracking-widest uppercase text-sm mb-3">{copy.leadership.tag}</p>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground">{copy.leadership.title}</h2>
           </AnimatedSection>
-          <motion.div
+          <AnimatedSection
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
             variants={staggerContainer}
           >
             {copy.leadership.members.map((person) => (
-              <motion.div
+              <div
                 key={person.name}
-                variants={staggerItem}
                 className="bg-white rounded-2xl p-6 text-center border border-border/40 hover:border-primary/30 hover:shadow-lg transition-all"
-                whileHover={{ y: -6, transition: { duration: 0.2 } }}
               >
                 <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Users className="w-10 h-10 text-primary" />
@@ -185,9 +165,9 @@ export default async function AboutPage(props: { params: Promise<{ locale: strin
                 <h3 className="font-bold text-foreground text-lg">{person.name}</h3>
                 <p className="text-primary font-semibold text-sm mt-1">{person.role}</p>
                 <p className="text-muted-foreground text-xs mt-2">{person.tenure}</p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </AnimatedSection>
         </div>
       </section>
 
