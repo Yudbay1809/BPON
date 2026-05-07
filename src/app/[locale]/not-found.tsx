@@ -1,9 +1,9 @@
-import { Link, getPathname } from '@/i18n/routing';
+import { Link } from '@/i18n/routing';
 import { Home, ArrowLeft, Search } from 'lucide-react';
 
-export default async function NotFound(props: { params: Promise<{ locale: string }> }) {
-  const params = await props.params;
-  const locale = params.locale;
+export default async function NotFound(props?: { params?: Promise<{ locale: string }> }) {
+  const params = props?.params ? await props.params : null;
+  const locale = params?.locale ?? 'id';
 
   return (
     <div className="min-h-screen bg-[#0d0505] flex items-center justify-center px-4 relative overflow-hidden">

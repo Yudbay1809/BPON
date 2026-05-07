@@ -1,4 +1,4 @@
-import { ArrowRight, Factory, Leaf, Truck } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { getLocalizedPageContent } from '@/content/page-content';
 import { Link } from '@/i18n/routing';
@@ -15,7 +15,7 @@ export default async function BusinessPage(props: { params: Promise<{ locale: st
   const params = await props.params;
   const t = await getTranslations({ locale: params.locale, namespace: 'Business' });
   const copy = getLocalizedPageContent(params.locale).business;
-  const businessIcons = [Leaf, Factory, Truck];
+  const businessIconKeys = ['leaf', 'factory', 'truck'] as const;
 
   return (
     <div className="w-full pt-20">
@@ -38,8 +38,6 @@ export default async function BusinessPage(props: { params: Promise<{ locale: st
 
           <div className="space-y-16">
             {copy.units.items.map((business, index) => {
-              const Icon = businessIcons[index];
-
               return (
                 <BusinessUnitCard
                   key={business.title}
@@ -49,7 +47,7 @@ export default async function BusinessPage(props: { params: Promise<{ locale: st
                   output={business.output}
                   highlights={business.highlights}
                   imgSrc={business.imgSrc}
-                  icon={Icon}
+                  iconKey={businessIconKeys[index]}
                   reverse={index % 2 !== 0}
                 />
               );

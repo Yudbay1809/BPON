@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import type { LucideIcon } from 'lucide-react';
+import { Factory, Leaf, Truck, type LucideIcon } from 'lucide-react';
 
 type BusinessUnitCardProps = {
   title: string;
@@ -11,11 +11,17 @@ type BusinessUnitCardProps = {
   output: string;
   highlights: ReadonlyArray<string>;
   imgSrc: string;
-  icon: LucideIcon;
+  iconKey: 'leaf' | 'factory' | 'truck';
   reverse?: boolean;
 };
 
 const smoothEase: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94];
+
+const iconMap: Record<BusinessUnitCardProps['iconKey'], LucideIcon> = {
+  leaf: Leaf,
+  factory: Factory,
+  truck: Truck,
+};
 
 const cardVariants = {
   hidden: { opacity: 0, y: 36 },
@@ -43,9 +49,11 @@ export function BusinessUnitCard({
   output,
   highlights,
   imgSrc,
-  icon: Icon,
+  iconKey,
   reverse = false,
 }: BusinessUnitCardProps) {
+  const Icon = iconMap[iconKey];
+
   return (
     <motion.article
       className="group grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
