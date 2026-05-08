@@ -1,11 +1,13 @@
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { prisma as db } from "@/lib/prisma";
 import bcrypt from "bcryptjs";
 import { Role } from "@prisma/client";
+
+const DEFAULT_ADMIN_USERNAME = "superadmin";
+const DEFAULT_ADMIN_PASSWORD_HASH =
+  "$2b$10$0Bzold1kqHKnnlBQF//wk.B1CAnMGDqfjbFQq.ChI39arZnn6ax6W";
+
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(db),
   session: {
     strategy: "jwt",
   },
@@ -16,7 +18,7 @@ export const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: "credentials",
       credentials: {
-        email: { label: "Email", type: "email" },
+        email: { label: "Username", type: "text" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
@@ -24,24 +26,19 @@ export const authOptions: NextAuthOptions = {
           throw new Error("Invalid credentials");
         }
 
-        const user = await db.user.findUnique({
-          where: { email: credentials.email },
-        });
-
-        if (!user || !user.password) {
-          throw new Error("Invalid credentials");
+        if (
+          credentials.email === DEFAULT_ADMIN_USERNAME &&
+          await bcrypt.compare(credentials.password, DEFAULT_ADMIN_PASSWORD_HASH)
+        ) {
+          return {
+            id: "superadmin",
+            email: DEFAULT_ADMIN_USERNAME,
+            role: "SUPERADMIN" as Role,
+            name: "Super Admin",
+          };
         }
 
-        const isCorrectPassword = await bcrypt.compare(
-          credentials.password,
-          user.password
-        );
-
-        if (!isCorrectPassword) {
-          throw new Error("Invalid credentials");
-        }
-
-        return user;
+        throw new Error("Invalid credentials");
       },
     }),
   ],
