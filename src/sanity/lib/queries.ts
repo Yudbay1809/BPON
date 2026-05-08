@@ -52,3 +52,10 @@ export const productBySlugQuery = groq`*[_type == "product" && slug.current == $
   },
   "pdfCatalog": pdfCatalog.asset->url
 }`
+
+export const siteSettingsQuery = groq`*[_type == "siteSettings"][0] {
+  "title": title[$locale],
+  "description": description[$locale],
+  keywords,
+  "ogImage": ogImage.asset->url
+}`

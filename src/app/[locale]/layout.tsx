@@ -8,6 +8,7 @@ import { Navbar } from '@/components/layout/Navbar';
 import { routing } from '@/i18n/routing';
 import { Analytics } from '@vercel/analytics/react';
 import { getSiteShellContent } from '@/lib/site-content';
+import { OrganizationJsonLd } from '@/components/layout/JsonLd';
 import '../globals.css';
 
 const lexend = Lexend({
@@ -22,29 +23,44 @@ const sourceSans = Source_Sans_3({
   weight: ['300', '400', '500', '600', '700'],
 });
 
+import { client } from '@/sanity/lib/client';
+import { siteSettingsQuery } from '@/sanity/lib/queries';
+
 export async function generateMetadata(props: { params: Promise<{ locale: string }> }) {
   const params = await props.params;
-  const content = await getSiteShellContent(params.locale);
+  const locale = params.locale;
+  
+  // Try to fetch from Sanity, fallback to local content
+  const [sanitySettings, content] = await Promise.all([
+    client.fetch(siteSettingsQuery, { locale }).catch(() => null),
+    getSiteShellContent(locale),
+  ]);
+
+  const siteTitle = sanitySettings?.title || content.metadata.title;
+  const siteDescription = sanitySettings?.description || content.metadata.description;
+  const ogImage = sanitySettings?.ogImage || '/og-image.jpg';
 
   return {
     title: {
-      template: `%s | PT Berlian Palm Oil Nusantara`,
-      default: content.metadata.title,
+      template: `%s | ${siteTitle}`,
+      default: siteTitle,
     },
-    description: content.metadata.description,
-    viewport: 'width=device-width, initial-scale=1',
+    description: siteDescription,
+    keywords: sanitySettings?.keywords || ['palm oil', 'sustainable', 'indonesia'],
     openGraph: {
-      title: content.metadata.title,
-      description: content.metadata.description,
-      url: 'https://bpon.vercel.app',
-      siteName: 'PT Berlian Palm Oil Nusantara',
-      locale: params.locale,
+      title: siteTitle,
+      description: siteDescription,
+      url: 'https://bpon.co.id',
+      siteName: siteTitle,
+      locale: locale,
       type: 'website',
+      images: [{ url: ogImage }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: content.metadata.title,
-      description: content.metadata.description,
+      title: siteTitle,
+      description: siteDescription,
+      images: [ogImage],
     },
   };
 }
@@ -68,6 +84,9 @@ export default async function LocaleLayout(props: {
 
   return (
     <html lang={locale}>
+      <head>
+        <OrganizationJsonLd />
+      </head>
       <body className={`${lexend.variable} ${sourceSans.variable} font-body min-h-screen flex flex-col bg-background text-foreground antialiased`}>
         <NextIntlClientProvider messages={messages}>
           <Navbar content={shellContent.navbar} />
