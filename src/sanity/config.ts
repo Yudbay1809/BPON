@@ -11,6 +11,6 @@ export default defineConfig({
   schema,
   plugins: [
     structureTool(),
-    visionTool(),
+    ...(process.env.NODE_ENV === 'development' ? [visionTool()] : []),
   ],
 })
