@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import { Lock, Mail, AlertCircle, ArrowRight } from "lucide-react";
 
 export default function LoginPage() {
@@ -28,10 +27,10 @@ export default function LoginPage() {
       if (res?.error) {
         setError("Invalid email or password");
       } else {
-        router.push("/admin");
+        router.push("/id/admin");
         router.refresh();
       }
-    } catch (err) {
+    } catch {
       setError("An unexpected error occurred");
     } finally {
       setLoading(false);
@@ -47,7 +46,7 @@ export default function LoginPage() {
               <Lock className="w-8 h-8 text-primary" />
             </div>
           </div>
-          
+
           <h1 className="text-2xl font-bold text-center text-foreground mb-2">
             Welcome Back
           </h1>
