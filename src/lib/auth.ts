@@ -18,16 +18,16 @@ export const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: "credentials",
       credentials: {
-        email: { label: "Username", type: "text" },
+        username: { label: "Username", type: "text" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
+        if (!credentials?.username || !credentials?.password) {
           throw new Error("Invalid credentials");
         }
 
         if (
-          credentials.email === DEFAULT_ADMIN_USERNAME &&
+          credentials.username === DEFAULT_ADMIN_USERNAME &&
           await bcrypt.compare(credentials.password, DEFAULT_ADMIN_PASSWORD_HASH)
         ) {
           return {
